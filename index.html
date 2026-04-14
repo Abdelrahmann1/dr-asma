@@ -1,627 +1,895 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>د. أسماء الحداد | نائب أول جراحة التجميل والليزر</title>
-  <meta name="description" content="د. أسماء الحداد - نائب أول جراحة التجميل والليزر. حلول تجميلية متقدمة بأحدث التقنيات الطبية.">
+<!doctype html>
+<html dir="rtl" lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>دكتورة أسماء الحداد – نائب أول جراحة التجميل والليزر</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.css" integrity="sha512-pmAAV1X4Nh5jA9m+jcvwJXFQvCBi3T17aZ1KWkqXr7g/O2YMvO8rfaa5ETWDuBvRq6fbDjlw4jHL44jNTScaKg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <!-- PRELOADER -->
+    <div id="preloader">
+      <div class="pre-logo">Dr. Asmaa</div>
+      <div class="pre-bar"><span></span></div>
+    </div>
 
-  <!-- Bootstrap RTL -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css">
-  <!-- AOS Animations -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-  <!-- Google Fonts Arabic -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,500&display=swap" rel="stylesheet">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- CURSOR -->
+    <div class="cur" id="cur"></div>
+    <div class="cur-ring" id="crng"></div>
 
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <!-- POPUP -->
+    <div class="pop-ov" id="popOv">
+      <div class="pop-box">
+        <button class="pop-x" id="popX">✕</button>
+        <h3>تواصل معنا</h3>
+        <div class="pop-form">
+          <input type="text" placeholder="الاسم بالكامل *" />
+          <input type="tel" placeholder="رقم الهاتف *" />
+          <input type="email" placeholder="البريد الإلكتروني" />
+          <select>
+            <option value="" disabled selected>الخدمة المطلوبة</option>
+            <option>تجميل وشد الوجه</option>
+            <option>حقن الفيلر</option>
+            <option>حقن البوتوكس</option>
+            <option>شد البطن</option>
+            <option>نحت الجسم وشفط الدهون</option>
+            <option>تجميل الثدي</option>
+            <option>أخرى</option>
+          </select>
+          <textarea placeholder="رسالتك..."></textarea>
+          <button onclick="sendToWhatsApp()">إرسال عبر واتساب</button>
+        </div>
+      </div>
+    </div>
 
-<!-- ===================== NAVBAR ===================== -->
-<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
-  <div class="container">
-    <a class="navbar-brand" href="#hero">
-      <span class="brand-name">د. أسماء الحداد</span>
-      <span class="brand-sub">جراحة التجميل والليزر</span>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="toggler-icon"><i class="fas fa-bars"></i></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item"><a class="nav-link" href="#services">خدماتنا</a></li>
-        <li class="nav-item"><a class="nav-link" href="#about">عن الدكتورة</a></li>
-        <li class="nav-item"><a class="nav-link" href="#articles">المقالات</a></li>
-        <li class="nav-item"><a class="nav-link" href="#testimonials">آراء العملاء</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">تواصل معنا</a></li>
-      </ul>
-      <a href="https://wa.me/00966566257520" class="btn btn-whatsapp" target="_blank">
-        <i class="fab fa-whatsapp me-1"></i> واتساب
+    <!-- SIDE BUTTONS -->
+    <div class="side-btns">
+      <div class="side-expand" id="openPop" style="cursor:pointer;">
+        <div class="side-icon"><i class="fa-regular fa-envelope"></i></div>
+        <span class="side-label">تواصل معنا</span>
+      </div>
+      <a class="side-expand" href="https://wa.me/00966566257520" target="_blank">
+        <div class="side-icon"><i class="fa-brands fa-whatsapp"></i></div>
+        <span class="side-label">واتساب</span>
+      </a>
+      <a class="side-expand" href="tel:00966566257520">
+        <div class="side-icon"><i class="fa-solid fa-phone"></i></div>
+        <span class="side-label">الهاتف</span>
       </a>
     </div>
-  </div>
-</nav>
 
-<!-- ===================== HERO ===================== -->
-<section id="hero" class="hero-section">
-  <div class="hero-overlay"></div>
-  <div class="hero-particles" id="particles"></div>
-  <div class="container h-100">
-    <div class="row h-100 align-items-center">
-      <div class="col-lg-7 col-md-8" data-aos="fade-right" data-aos-duration="1000">
-        <div class="hero-badge">نائب أول جراحة التجميل والليزر</div>
-        <h1 class="hero-title">دكتورة<br><span class="gold-text">أسماء الحداد</span></h1>
-        <p class="hero-subtitle">حلول تجميلية متقدمة تجمع بين الخبرة والدقة. متخصصة في الليزر ونحت الجسم وعلاج الحروق وحقن الفيلر والبوتوكس لتحقيق نتائج طبيعية وآمنة</p>
-        <div class="hero-cta d-flex flex-wrap gap-3 mt-4">
-          <a href="#contact" class="btn btn-primary-gold btn-lg">
-            احجز استشارتك <i class="fas fa-arrow-left ms-2"></i>
-          </a>
-          <a href="#services" class="btn btn-outline-light-custom btn-lg">
-            تعرف على خدماتنا
-          </a>
-        </div>
-        <div class="hero-stats d-flex flex-wrap gap-4 mt-5">
-          <div class="stat-item">
-            <span class="stat-num">+500</span>
-            <span class="stat-label">حالة ناجحة</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <span class="stat-num">+10</span>
-            <span class="stat-label">سنوات خبرة</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <span class="stat-num">100%</span>
-            <span class="stat-label">رضا العملاء</span>
-          </div>
+    <!-- HEADER -->
+    <header id="hdr">
+      <div class="hdr-logo">
+        <div class="hdr-logo-text">
+     <img src="../assets/logo.png" alt="">
         </div>
       </div>
-      <div class="col-lg-5 d-none d-lg-flex justify-content-center" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-        <div class="hero-image-frame">
-          <div class="hero-image-inner">
-            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&q=80" alt="د. أسماء الحداد" class="hero-img">
-          </div>
-          <div class="hero-image-decoration"></div>
-          <div class="floating-badge-card">
-            <i class="fas fa-star text-warning"></i>
-            <span>نتائج طبيعية وآمنة</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="hero-scroll-hint">
-    <span>اكتشف المزيد</span>
-    <div class="scroll-line"></div>
-  </div>
-</section>
+      <nav>
+        <a href="#home" class="active">الرئيسية</a>
+        <a href="#services">خدماتنا</a>
+        <a href="#about">عن الدكتورة</a>
+        <a href="#articles">مقالات</a>
+        <a href="#reviews">آراء العملاء</a>
+        <a href="#contact">تواصل معنا</a>
+      </nav>
+      <div class="hamburger" id="hbg"><span></span><span></span></div>
+    </header>
 
-<!-- ===================== SERVICES ===================== -->
-<section id="services" class="section-padding bg-light-cream">
-  <div class="container">
-    <div class="section-header text-center" data-aos="fade-up">
-      <span class="section-tag">ما نقدمه لك</span>
-      <h2 class="section-title">خدماتنا المتميزة</h2>
-      <p class="section-subtitle">نقدم مجموعة شاملة من التدخلات التجميلية بأحدث التقنيات وأعلى معايير الجودة</p>
-      <div class="title-ornament"></div>
+    <div class="mobile-nav" id="mnav">
+      <a href="#home">الرئيسية</a>
+      <a href="#services">خدماتنا</a>
+      <a href="#about">عن الدكتورة</a>
+      <a href="#articles">مقالات</a>
+      <a href="#reviews">آراء العملاء</a>
+      <a href="#contact">تواصل معنا</a>
     </div>
 
-    <div class="row g-4 mt-3">
-
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
-        <div class="service-card">
-          <div class="service-icon-wrap"><i class="fas fa-spa"></i></div>
-          <h4>تجميل وشد الوجه</h4>
-          <p>علاج التجاعيد وشد الوجه وتجديد الشباب باستخدام أحدث التقنيات الطبية لنتائج طبيعية ومتوازنة</p>
-          <ul class="service-list">
-            <li><i class="fas fa-check"></i> علاج التجاعيد</li>
-            <li><i class="fas fa-check"></i> شد الرقبة</li>
-            <li><i class="fas fa-check"></i> تجميل الشفاه</li>
-            <li><i class="fas fa-check"></i> تجميل وتحديد الفك</li>
-          </ul>
+    <!-- ══ HERO ══ -->
+    <section class="hero" id="home">
+      <div class="hero-watermark">Dr. Asmaa</div>
+      <div class="hero-line" id="hLine">
+        <svg viewBox="0 0 800 500" preserveAspectRatio="none">
+          <path class="h-line" d="M800,0 L0,500" />
+        </svg>
+      </div>
+      <div class="hero-content">
+        <div class="hero-right">
+          <h1>
+            <span class="dr-small">دكتورة</span>
+            أسماءالحداد
+          </h1>
+          <!-- <div class="hero-title">نائب أول جراحة التجميل والليزر</div> -->
+        </div>
+        <div class="hero-img-wrap">
+          <div class="hero-icon">
+            <!-- <img
+              src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&q=80"
+              alt=""
+            /> -->
+          </div>
+        </div>
+        <div class="hero-left">
+          <div class="hero-bracket">
+            <p>
+              د. أسماء الحداد نائب أول جراحة التجميل تقدم حلول تجميلية متقدمة
+              تجمع بين الخبرة والدقة. متخصصة في الليزر ونحت الجسم وعلاج الحروق
+              وحقن الفيلر والبوتوكس لتحقيق نتائج طبيعية وآمنة.
+            </p>
+          </div>
         </div>
       </div>
+      <!-- <div class="hero-svc-label">خدماتنا</div> -->
+    </section>
 
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-        <div class="service-card service-card-featured">
-          <div class="featured-badge">الأكثر طلبًا</div>
-          <div class="service-icon-wrap"><i class="fas fa-syringe"></i></div>
-          <h4>الحقن التجميلية</h4>
-          <p>حقن متخصصة لتحقيق نتائج فورية وطويلة الأمد تحت إشراف طبي دقيق وبأعلى درجات الأمان</p>
-          <ul class="service-list">
-            <li><i class="fas fa-check"></i> حقن الفيلر</li>
-            <li><i class="fas fa-check"></i> حقن البوتوكس</li>
-            <li><i class="fas fa-check"></i> حقن الميزوثيرابي</li>
-            <li><i class="fas fa-check"></i> حقن الخلايا الجذعية</li>
-          </ul>
+    <!-- WAVE -->
+    
+    <div class="wave-sec" id="waveSec">
+      <svg
+        viewBox="0 0 1400 130"
+        preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <linearGradient id="wg" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#6b5530" />
+            <stop offset="50%" stop-color="#987b43" />
+            <stop offset="100%" stop-color="#c4a96e" />
+          </linearGradient>
+        </defs>
+        <path
+          class="wp"
+          d="M0,65 C200,15 350,115 560,65 C770,15 900,115 1120,65 C1280,25 1360,85 1400,65"
+        />
+      </svg>
+    </div>
+    <!-- ══ SERVICES ══ -->
+    <section class="svc-section" id="services">
+      <div style="max-width: 1300px; margin: 0 auto">
+        <div class="sec-head rev">
+          <h2>خدماتنا</h2>
+          <div class="gold-bar4"></div>
         </div>
-      </div>
 
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-        <div class="service-card">
-          <div class="service-icon-wrap"><i class="fas fa-magic"></i></div>
-          <h4>نحت الجسم</h4>
-          <p>تقنيات متطورة لنحت الجسم وإزالة الدهون المتراكمة لمظهر متناسق وثقة أعلى بالنفس</p>
-          <ul class="service-list">
-            <li><i class="fas fa-check"></i> نحت الرقبة وإزالة اللغد</li>
-            <li><i class="fas fa-check"></i> نحت الجسم وشفط الدهون</li>
-            <li><i class="fas fa-check"></i> شد البطن</li>
-            <li><i class="fas fa-check"></i> تصغير الثدي</li>
-          </ul>
-        </div>
-      </div>
+         
+      <div class="cards">
 
+  <div class="card">
+    <div class="card-front">
+      <h1>01</h1>
+      <h3>تجميل وشد الوجه</h3>
+    </div>
+    <div class="card-back">
+      <img src="assets/تجميل وشد الوجه.webp" loading="lazy" class="card-back" alt="تجميل وشد الوجه">
     </div>
   </div>
-</section>
 
-<!-- ===================== ABOUT ===================== -->
-<section id="about" class="section-padding about-section">
-  <div class="container">
-    <div class="row align-items-center g-5">
-      <div class="col-lg-5" data-aos="fade-right">
-        <div class="about-image-wrapper">
-          <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=500&q=80" alt="عن الدكتورة" class="about-img">
+  <div class="card">
+    <div class="card-front">
+      <h1>02</h1>
+      <h3>علاج التجاعيد</h3>
+    </div>
+    <div class="card-back">
+      <img src="assets/علاج التجاعيد.jpg" loading="lazy" class="card-back" alt="علاج التجاعيد">
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-front">
+      <h1>03</h1>
+      <h3>شد البطن</h3>
+    </div>
+    <div class="card-back">
+      <img src="assets/شد البطن.webp" loading="lazy" class="card-back" alt="شد البطن">
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-front">
+      <h1>04</h1>
+      <h3>شد الرقبة</h3>
+    </div>
+    <div class="card-back">
+      <img src="assets/شد الرقبة.jpg" loading="lazy" class="card-back" alt="شد الرقبة">
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-front">
+      <h1>05</h1>
+      <h3>تجميل الشفاه</h3>
+    </div>
+    <div class="card-back">
+      <img src="assets/تجميل الشفاه.jpg" loading="lazy" class="card-back" alt="تجميل الشفاه">
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-front">
+      <h1>06</h1>
+      <h3>تجميل وتحديد الفك</h3>
+    </div>
+    <div class="card-back">
+      <img src="assets/تجميل وتحديد الفك.jpg" loading="lazy" class="card-back" alt="تجميل وتحديد الفك">
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-front">
+      <h1>07</h1>
+      <h3>حقن الفيلر</h3>
+    </div>
+    <div class="card-back">
+      <img src="assets/حقن الفيلر.jpg" loading="lazy" class="card-back" alt="حقن الفيلر">
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-front">
+      <h1>08</h1>
+      <h3>حقن البوتوكس</h3>
+    </div>
+    <div class="card-back">
+      <img src="assets/حقن البوتوكس.png" loading="lazy" class="card-back" alt="حقن البوتوكس">
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-front">
+      <h1>09</h1>
+      <h3>تنظيف البشرة</h3>
+    </div>
+    <div class="card-back">
+      <img src="assets/تنظيف  البشرة.jpg" loading="lazy" class="card-back" alt="تنظيف البشرة">
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-front">
+      <h1>10</h1>
+      <h3>سكين بوستر</h3>
+    </div>
+    <div class="card-back">
+      <img src="assets/سكين بوستر.jpg" loading="lazy" class="card-back" alt="سكين بوستر">
+    </div>
+  </div>
+
+  <div class="card" id="card-11">
+    <div class="card-front">
+      <h1>11</h1>
+      <h3>حقن الميزوثيرابي والخلايا الجذعية</h3>
+    </div>
+    <div class="card-back">
+      <img src="assets/حقن الميزوثيرابي.jpg" loading="lazy" class="card-back" alt="حقن الميزوثيرابي والخلايا الجذعية">
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-front">
+      <h1>12</h1>
+      <h3>نحت الرقبة وإزالة اللغد</h3>
+    </div>
+    <div class="card-back">
+      <img src="assets/ازالة اللغد.jpg" loading="lazy" class="card-back" alt="نحت الرقبة وإزالة اللغد">
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-front">
+      <h1>13</h1>
+      <h3>نحت الجسم وشفط الدهون</h3>
+    </div>
+    <div class="card-back">
+      <img src="assets/نحت الجسم.jpg" loading="lazy" class="card-back" alt="نحت الجسم وشفط الدهون">
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-front">
+      <h1>14</h1>
+      <h3>تجميل الثدي</h3>
+    </div>
+    <div class="card-back">
+      <img src="assets/تجميل الثدي.webp" loading="lazy" class="card-back" alt="تجميل الثدي">
+    </div>
+  </div>
+
+</div>
+      </div>
+    </section>
+
+    <!-- ══ ABOUT ══ -->
+    <section class="about-sec" id="about">
+      <div class="about-in">
+        <div class="about-img rev-l">
+          <div
+            style="
+              min-height: 480px;
+              max-height: 90vh;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              position: relative;
+              overflow: hidden;
+            "
+          >
+            <!-- Decorative background -->
+            <img src="../assets/about.jpeg" alt="">
+          </div>
           <div class="about-badge">
-            <i class="fas fa-award"></i>
-            <span>نائب أول جراحة التجميل</span>
+            <div class="about-badge-box">
+              <div class="b1">PLASTIC SURGERY</div>
+              <div class="b2">نائب أول جراحة التجميل</div>
+              <div class="b3">LASER & BODY SCULPTING</div>
+            </div>
+            <div class="dr-badge">
+              <div class="bar"></div>
+              <div class="dr">Dr.</div>
+              <div class="nm">ASMAA ELHADDAD</div>
+            </div>
           </div>
-          <div class="about-decoration-dots"></div>
+        </div>
+
+        <div class="about-r rev-r">
+          <!-- Decorative beauty icon -->
+          <div class="beauty-icon">
+            <svg viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+              <polygon
+                points="45,5 52,32 80,32 57,50 65,78 45,60 25,78 33,50 10,32 38,32"
+                fill="none"
+                stroke="#987b43"
+                stroke-width="2"
+                stroke-linejoin="round"
+                opacity=".6"
+              />
+              <polygon
+                points="45,18 49,33 65,33 53,42 57,58 45,49 33,58 37,42 25,33 41,33"
+                fill="none"
+                stroke="#c4a96e"
+                stroke-width="1"
+                stroke-linejoin="round"
+                opacity=".4"
+              />
+              <circle
+                cx="45"
+                cy="45"
+                r="8"
+                fill="none"
+                stroke="#987b43"
+                stroke-width="1.5"
+                opacity=".5"
+              />
+            </svg>
+          </div>
+          <div class="about-head">
+            <div class="bar"></div>
+            <h2>عن الدكتورة أسماء</h2>
+          </div>
+          <p class="about-txt">
+            تؤمن د. أسماء الحداد بأن الجمال الحقيقي يبدأ من تعزيز الثقة بالنفس، لذلك تحرص على تقديم استشارات دقيقة لكل حالة وفق احتياجاتها الخاصة. تعتمد على أحدث التقنيات الطبية وتلتزم بأعلى معايير الجودة لضمان نتائج متوازنة وطبيعية
+          </p>
         </div>
       </div>
-      <div class="col-lg-7" data-aos="fade-left">
-        <span class="section-tag">من نحن</span>
-        <h2 class="section-title">عن الدكتورة<br><span class="gold-text">أسماء الحداد</span></h2>
-        <div class="title-ornament mb-4"></div>
-        <p class="about-text">تؤمن د. أسماء الحداد بأن الجمال الحقيقي يبدأ من تعزيز الثقة بالنفس، لذلك تحرص على تقديم استشارات دقيقة لكل حالة وفق احتياجاتها الخاصة.</p>
-        <p class="about-text">تعتمد على أحدث التقنيات الطبية وتلتزم بأعلى معايير الجودة لضمان نتائج متوازنة وطبيعية تجعل كل عميلة تشعر بأفضل نسخة من نفسها.</p>
+    </section>
 
-        <div class="about-features row g-3 mt-2">
-          <div class="col-6">
-            <div class="about-feat-item">
-              <i class="fas fa-microscope"></i>
-              <span>أحدث التقنيات الطبية</span>
-            </div>
+    <!-- ══ ARTICLES ══ -->
+    <section class="articles-sec" id="articles">
+      <div class="articles-in">
+        <div class="sec-head rev">
+          <h2>مقالات</h2>
+          <div class="gold-bar4"></div>
+        </div>
+        <div class="articles-grid">
+          <div class="art-c rev" data-d="1">
+            <div class="art-num">01</div>
+            <div class="art-title">الفرق بين الفيلر والبوتوكس</div>
+            <div class="art-arr"><span>↗</span></div>
           </div>
-          <div class="col-6">
-            <div class="about-feat-item">
-              <i class="fas fa-shield-alt"></i>
-              <span>أعلى معايير الأمان</span>
-            </div>
+
+          <div class="art-c rev" data-d="2">
+            <div class="art-num">02</div>
+            <div class="art-title">معلومات عن عمليات شفط الدهون</div>
+            <div class="art-arr"><span>↗</span></div>
           </div>
-          <div class="col-6">
-            <div class="about-feat-item">
-              <i class="fas fa-heart"></i>
-              <span>نتائج طبيعية ومتوازنة</span>
+
+          <div class="art-c rev" data-d="3">
+            <div class="art-num">03</div>
+            <div class="art-title">
+              شد البطن والتخلص من الترهلات والجلد الزائد
             </div>
+            <div class="art-arr"><span>↗</span></div>
           </div>
-          <div class="col-6">
-            <div class="about-feat-item">
-              <i class="fas fa-user-md"></i>
-              <span>استشارات شخصية دقيقة</span>
+
+          <div class="art-c rev" data-d="4">
+            <div class="art-num">04</div>
+            <div class="art-title">تعرف على عملية إزالة اللغد ونحت الرقبة</div>
+            <div class="art-arr"><span>↗</span></div>
+          </div>
+
+          <div class="art-c rev" data-d="1">
+            <div class="art-num">05</div>
+            <div class="art-title">حقن الميزوثيرابي والخلايا الجذعية للشعر</div>
+            <div class="art-arr"><span>↗</span></div>
+          </div>
+
+          <div class="art-c rev" data-d="2">
+            <div class="art-num">06</div>
+            <div class="art-title">
+              الفيلر والبوتوكس: أكثر من تجميل.. تحفيز طبيعي للكولاجين
             </div>
+            <div class="art-arr"><span>↗</span></div>
+          </div>
+
+          <div class="art-c rev" data-d="3">
+            <div class="art-num">07</div>
+            <div class="art-title">أسباب شائعة لتساقط الشعر يجب تجنبها</div>
+            <div class="art-arr"><span>↗</span></div>
+          </div>
+
+          <div class="art-c rev" data-d="4">
+            <div class="art-num">08</div>
+            <div class="art-title">
+              تصغير الثدي: الحل الفعّال لاستعادة الراحة والتناسق بثقة
+            </div>
+            <div class="art-arr"><span>↗</span></div>
           </div>
         </div>
+      </div>
+    </section>
+<section class="testi-sec" id="reviews">
+  <div class="testi-wrap">
+    <div class="sec-head rev">
+      <h2>آراء العملاء</h2>
+      <div class="gold-bar4"></div>
+    </div>
+<div class="swiper testi-slider" id="testiSl">
+  <div class="swiper-wrapper">
 
-        <a href="#contact" class="btn btn-primary-gold mt-4">
-          احجز استشارة مجانية <i class="fas fa-arrow-left ms-2"></i>
-        </a>
+    <div class="swiper-slide">
+      <div class="testi-c">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">التعامل راقي جدًا والدكتورة بتشرح كل حاجة قبل ما تبدأ</p>
       </div>
     </div>
+
+    <div class="swiper-slide">
+      <div class="testi-c">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">مكان محترم وخبرة واضحة في الشغل والنتيجة كانت مرضية جدًا</p>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="testi-c">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">فريق العمل متعاون جدًا والمتابعة بعد الجلسة كانت ممتازة</p>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="testi-c">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">أمان وثقة كبيرة أثناء الإجراء وده فرق معايا جدًا</p>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="testi-c">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">من أفضل الأماكن اللي جربتها من ناحية النظافة والاهتمام بالتفاصيل</p>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="testi-c">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">كنت متوترة بالبداية، بس الدكتورة طمنتني وفعلاً النتيجة طلعت أحلى مما توقعت</p>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="testi-c">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">اهتمامهم بالتفاصيل الصغيرة، حتى بعد الجلسة تابعوا معي</p>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="testi-c">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">شفط الدهون فرق معايا في شكل جسمي وثقتي بنفسي</p>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="testi-c">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">الدكتورة شاطرة جدا وتهتم بادق التفاصيل</p>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="testi-c">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">اشكر دكتورة اسماء وفريقها واتمنى لهم النجاح والتوفيق</p>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="testi-c">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">أفضل عيادة تجميل في السعودية</p>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="testi-c">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">كنت اخاف من حقن الفيلر لكن الدكتورة ممتاز كل شي اكثر من رائع</p>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="testi-c">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">شكرا جدا لاختى الدكتورة أسماء واتمنى لها مزيدا من النجاح والتقدم</p>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="testi-c">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">سويت شد وجه وعلاج تجاعيد، والنتيجة كانت مره طبيعية ووجهي صار مشدود بدون مبالغة</p>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="testi-c">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">شد الرقبة عطاني مظهر أصغر بالعمر بشكل ملحوظ شكرا دكتوره</p>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="testi-c">
+        <div class="stars">★★★★★</div>
+        <p class="testi-txt">أكثر شيء عجبني إنهم يركزون على النتيجة الطبيعية</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Dots بتاعت Swiper بدل الـ dots اليدوية -->
+  <div class="swiper-pagination testi-dots"></div>
+</div>
   </div>
 </section>
 
-<!-- ===================== ARTICLES ===================== -->
-<section id="articles" class="section-padding bg-light-cream">
-  <div class="container">
-    <div class="section-header text-center" data-aos="fade-up">
-      <span class="section-tag">اقرأ وتعلم</span>
-      <h2 class="section-title">مقالات طبية متخصصة</h2>
-      <p class="section-subtitle">محتوى علمي موثوق يساعدك على اتخاذ القرار الصحيح</p>
-      <div class="title-ornament"></div>
-    </div>
-
-    <div class="row g-4 mt-3">
-
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
-        <div class="article-card">
-          <div class="article-img-wrap">
-            <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=400&q=80" alt="فيلر وبوتوكس">
-            <div class="article-tag-overlay">الحقن التجميلية</div>
-          </div>
-          <div class="article-body">
-            <h5>الفرق بين الفيلر والبوتوكس</h5>
-            <p>دليل شامل يوضح الفرق بين الإجراءين والحالات المناسبة لكل منهما لنتائج مثالية</p>
-            <a href="#contact" class="article-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-        <div class="article-card">
-          <div class="article-img-wrap">
-            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=80" alt="شفط الدهون">
-            <div class="article-tag-overlay">نحت الجسم</div>
-          </div>
-          <div class="article-body">
-            <h5>معلومات عن عمليات شفط الدهون</h5>
-            <p>كل ما تحتاج معرفته عن شفط الدهون والنتائج المتوقعة وفترة التعافي</p>
-            <a href="#contact" class="article-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-        <div class="article-card">
-          <div class="article-img-wrap">
-            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=80" alt="شد البطن">
-            <div class="article-tag-overlay">جراحة الجسم</div>
-          </div>
-          <div class="article-body">
-            <h5>شد البطن والتخلص من الترهلات</h5>
-            <p>معلومات تفصيلية عن عملية شد البطن وإزالة الجلد الزائد وفقدان الوزن الزائد</p>
-            <a href="#contact" class="article-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
-        <div class="article-card">
-          <div class="article-img-wrap">
-            <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=400&q=80" alt="إزالة اللغد">
-            <div class="article-tag-overlay">نحت الرقبة</div>
-          </div>
-          <div class="article-body">
-            <h5>تعرف على عملية إزالة اللغد ونحت الرقبة</h5>
-            <p>استكشف كيف تمنحك هذه العملية مظهراً أكثر شباباً وتناسقاً</p>
-            <a href="#contact" class="article-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-        <div class="article-card">
-          <div class="article-img-wrap">
-            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=80" alt="ميزوثيرابي">
-            <div class="article-tag-overlay">علاج الشعر</div>
-          </div>
-          <div class="article-body">
-            <h5>حقن الميزوثيرابي والخلايا الجذعية للشعر</h5>
-            <p>الحل الأمثل لتساقط الشعر وتقوية بصيلاته باستخدام أحدث التقنيات</p>
-            <a href="#contact" class="article-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-        <div class="article-card">
-          <div class="article-img-wrap">
-            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&q=80" alt="تصغير الثدي">
-            <div class="article-tag-overlay">جراحة تجميلية</div>
-          </div>
-          <div class="article-body">
-            <h5>تصغير الثدي: استعادة الراحة والتناسق</h5>
-            <p>الحل الفعّال لاستعادة الراحة والتناسق الجسدي بثقة وأمان تام</p>
-            <a href="#contact" class="article-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===================== TESTIMONIALS ===================== -->
-<section id="testimonials" class="section-padding testimonials-section">
-  <div class="container">
-    <div class="section-header text-center" data-aos="fade-up">
-      <span class="section-tag">ثقتهم تشرفنا</span>
-      <h2 class="section-title">آراء عملائنا</h2>
-      <p class="section-subtitle">تجارب حقيقية من عملاء وثقوا بد. أسماء الحداد</p>
-      <div class="title-ornament"></div>
-    </div>
-
-    <div class="row g-4 mt-3">
-
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
-        <div class="testimonial-card">
-          <div class="stars mb-2">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p>"التعامل راقي جدًا والدكتورة بتشرح كل حاجة قبل ما تبدأ"</p>
-          <div class="reviewer"><div class="reviewer-avatar">م</div><span>عميلة كريمة</span></div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-        <div class="testimonial-card">
-          <div class="stars mb-2">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p>"مكان محترم وخبرة واضحة في الشغل والنتيجة كانت مرضية جدًا"</p>
-          <div class="reviewer"><div class="reviewer-avatar">ه</div><span>عميلة كريمة</span></div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-        <div class="testimonial-card testimonial-featured">
-          <div class="stars mb-2">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p>"كنت متوترة بالبداية، بس الدكتورة طمنتني وفعلاً النتيجة طلعت أحلى مما توقعت"</p>
-          <div class="reviewer"><div class="reviewer-avatar">ن</div><span>عميلة كريمة</span></div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
-        <div class="testimonial-card">
-          <div class="stars mb-2">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p>"فريق العمل متعاون جدًا والمتابعة بعد الجلسة كانت ممتازة"</p>
-          <div class="reviewer"><div class="reviewer-avatar">س</div><span>عميلة كريمة</span></div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-        <div class="testimonial-card">
-          <div class="stars mb-2">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p>"شفط الدهون فرق معايا في شكل جسمي وثقتي بنفسي — الدكتورة شاطرة جدا وتهتم بأدق التفاصيل"</p>
-          <div class="reviewer"><div class="reviewer-avatar">ر</div><span>عميلة كريمة</span></div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-        <div class="testimonial-card">
-          <div class="stars mb-2">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p>"سويت شد وجه وعلاج تجاعيد، والنتيجة كانت مره طبيعية ووجهي صار مشدود بدون مبالغة"</p>
-          <div class="reviewer"><div class="reviewer-avatar">ف</div><span>عميلة كريمة</span></div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0">
-        <div class="testimonial-card">
-          <div class="stars mb-2">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p>"أمان وثقة كبيرة أثناء الإجراء وده فرق معايا جدًا"</p>
-          <div class="reviewer"><div class="reviewer-avatar">أ</div><span>عميلة كريمة</span></div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-        <div class="testimonial-card">
-          <div class="stars mb-2">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p>"أفضل عيادة تجميل في السعودية — أكثر شيء عجبني إنهم يركزون على النتيجة الطبيعية"</p>
-          <div class="reviewer"><div class="reviewer-avatar">د</div><span>عميلة كريمة</span></div>
-        </div>
-      </div>
-
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-        <div class="testimonial-card">
-          <div class="stars mb-2">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p>"شد الرقبة عطاني مظهر أصغر بالعمر بشكل ملحوظ — شكرا دكتورة أسماء وفريقها"</p>
-          <div class="reviewer"><div class="reviewer-avatar">ل</div><span>عميلة كريمة</span></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===================== CTA BANNER ===================== -->
-<section class="cta-banner">
-  <div class="container text-center" data-aos="zoom-in">
-    <div class="cta-icon mb-3"><i class="fas fa-heartbeat"></i></div>
-    <h2>ابدئي رحلتك نحو الجمال والثقة</h2>
-    <p>احجزي استشارتك اليوم مع د. أسماء الحداد واكتشفي الفرق</p>
-    <div class="d-flex justify-content-center gap-3 flex-wrap mt-4">
-      <a href="https://wa.me/00966566257520" class="btn btn-primary-gold btn-lg" target="_blank">
-        <i class="fab fa-whatsapp me-2"></i> تواصل عبر واتساب
-      </a>
-      <a href="tel:00966566257520" class="btn btn-outline-white btn-lg">
-        <i class="fas fa-phone me-2"></i> اتصلي بنا
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== CONTACT ===================== -->
-<section id="contact" class="section-padding bg-light-cream">
-  <div class="container">
-    <div class="section-header text-center" data-aos="fade-up">
-      <span class="section-tag">نحن هنا لك</span>
-      <h2 class="section-title">تواصلي معنا</h2>
-      <p class="section-subtitle">أرسلي رسالتك وسيتواصل معك فريقنا في أقرب وقت</p>
-      <div class="title-ornament"></div>
-    </div>
-
-    <div class="row g-5 mt-2">
-      <div class="col-lg-5" data-aos="fade-right">
-        <div class="contact-info-card">
-          <h4 class="mb-4">معلومات التواصل</h4>
-
-          <div class="contact-info-item">
-            <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
-            <div>
-              <span class="contact-label">واتساب ومكالمات</span>
-              <a href="https://wa.me/00966566257520" class="contact-value" dir="ltr">+966 566 257 520</a>
-            </div>
-          </div>
-
-          <div class="contact-info-item">
-            <div class="contact-icon"><i class="fab fa-facebook-f"></i></div>
-            <div>
-              <span class="contact-label">فيسبوك</span>
-              <a href="https://www.facebook.com/DrAsmaaElhaddad" class="contact-value" target="_blank">DrAsmaaElhaddad</a>
-            </div>
-          </div>
-
-          <div class="contact-info-item">
-            <div class="contact-icon"><i class="fab fa-instagram"></i></div>
-            <div>
-              <span class="contact-label">إنستغرام</span>
-              <a href="https://www.instagram.com/dr.asmaaelhaddad/" class="contact-value" target="_blank">dr.asmaaelhaddad</a>
-            </div>
-          </div>
-
-          <div class="contact-info-item">
-            <div class="contact-icon"><i class="fab fa-tiktok"></i></div>
-            <div>
-              <span class="contact-label">تيك توك</span>
-              <a href="https://www.tiktok.com/@dr.asmaa.mohammed" class="contact-value" target="_blank">dr.asmaa.mohammed</a>
-            </div>
-          </div>
-
-          <div class="contact-info-item">
-            <div class="contact-icon"><i class="fab fa-snapchat-ghost"></i></div>
-            <div>
-              <span class="contact-label">سناب شات</span>
-              <a href="https://www.snapchat.com/@asmaa_091272" class="contact-value" target="_blank">asmaa_091272</a>
-            </div>
-          </div>
-
-          <div class="social-links-row mt-4">
-            <a href="https://www.facebook.com/DrAsmaaElhaddad" class="social-btn facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/dr.asmaaelhaddad/" class="social-btn instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.tiktok.com/@dr.asmaa.mohammed" class="social-btn tiktok" target="_blank"><i class="fab fa-tiktok"></i></a>
-            <a href="https://www.snapchat.com/@asmaa_091272" class="social-btn snapchat" target="_blank"><i class="fab fa-snapchat-ghost"></i></a>
-            <a href="https://wa.me/00966566257520" class="social-btn whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-7" data-aos="fade-left">
-        <div class="contact-form-card">
-          <form id="contactForm" novalidate>
-            <div class="row g-3">
-              <div class="col-md-6">
-                <label class="form-label">الاسم الكامل *</label>
-                <input type="text" class="form-control" placeholder="{{اسمك الكامل}}" required>
+    <!-- ══ CONTACT ══ -->
+    <section class="contact-sec" id="contact">
+      <div class="contact-in">
+        <!-- Form -->
+        <div class="rev-l">
+          <div class="cf">
+            <div class="cf-row">
+              <div
+                class="cf-f"
+                style="border-left: 1px solid rgba(152, 123, 67, 0.2)"
+              >
+                <input type="text" id="cfName" placeholder="الاسم بالكامل" />
               </div>
-              <div class="col-md-6">
-                <label class="form-label">رقم الجوال *</label>
-                <input type="tel" class="form-control" placeholder="{{رقم جوالك}}" required>
-              </div>
-              <div class="col-12">
-                <label class="form-label">البريد الإلكتروني</label>
-                <input type="email" class="form-control" placeholder="{{بريدك الإلكتروني}}">
-              </div>
-              <div class="col-12">
-                <label class="form-label">الخدمة المطلوبة *</label>
-                <select class="form-select" required>
-                  <option value="">اختاري الخدمة</option>
-                  <option>تجميل وشد الوجه</option>
-                  <option>علاج التجاعيد</option>
-                  <option>شد البطن</option>
-                  <option>شد الرقبة</option>
-                  <option>تجميل الشفاه</option>
-                  <option>تجميل وتحديد الفك</option>
-                  <option>حقن الفيلر</option>
-                  <option>حقن البوتوكس</option>
-                  <option>حقن الميزوثيرابي والخلايا الجذعية</option>
-                  <option>نحت الرقبة وإزالة اللغد</option>
-                  <option>نحت الجسم وشفط الدهون</option>
-                  <option>استشارة عامة</option>
-                </select>
-              </div>
-              <div class="col-12">
-                <label class="form-label">رسالتك</label>
-                <textarea class="form-control" rows="4" placeholder="{{اكتبي ملاحظاتك أو استفساراتك هنا}}"></textarea>
-              </div>
-              <div class="col-12">
-                <button type="submit" class="btn btn-primary-gold w-100 btn-lg">
-                  <i class="fas fa-paper-plane me-2"></i> إرسال الرسالة
-                </button>
+              <div class="cf-f">
+                <input type="tel" id="cfPhone" placeholder="الهاتف *" />
               </div>
             </div>
-          </form>
-          <div id="formSuccess" class="form-success-msg d-none">
-            <i class="fas fa-check-circle"></i>
-            <p>تم إرسال رسالتك بنجاح! سيتواصل معك فريقنا قريباً</p>
+            <div class="cf-f full">
+              <select id="cfService">
+                <option value="" disabled selected>الخدمة المطلوبة</option>
+                <option>تجميل وشد الوجه</option>
+                <option>علاج التجاعيد</option>
+                <option>شد البطن</option>
+                <option>شد الرقبة</option>
+                <option>تجميل الشفاه</option>
+                <option>تجميل وتحديد الفك</option>
+                <option>حقن الفيلر</option>
+                <option>حقن البوتوكس</option>
+                <option>تنظيف البشرة / سكين بوستر</option>
+                <option>حقن الميزوثيرابي والخلايا الجذعية</option>
+                <option>نحت الرقبة وإزالة اللغد</option>
+                <option>نحت الجسم وشفط الدهون</option>
+                <option>تجميل الثدي</option>
+                <option>أخرى</option>
+              </select>
+            </div>
+            <div class="cf-f full" style="padding: 14px 0">
+              <textarea id="cfMsg" placeholder="رسالتك"></textarea>
+            </div>
+            <div class="cf-submit">
+              <button class="cf-btn" onclick="sendToWhatsApp()">
+                إرسال عبر واتساب
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div class="contact-r rev-r">
+          <h2>
+            <span class="bar"></span>
+            تواصل معنا
+          </h2>
+          <p>
+            يسعدنا تواصلكم معنا للحصول على استشارة متخصصة مع د. أسماء الحداد.
+            فريقنا جاهز دائماً للإجابة على جميع استفساراتكم والمتابعة معكم قبل
+            وأثناء وبعد أي إجراء تجميلي.
+          </p>
+          <div class="contact-info">
+            <div class="contact-info-item">
+              <span class="ci-icon">📞</span>
+              <a href="tel:00966566257520" style="color: var(--muted)"
+                >00966566257520</a
+              >
+            </div>
+            <div class="contact-info-item">
+              <i class="fi fa-brands fa-whatsapp"></i>
+              <a
+                href="https://wa.me/00966566257520"
+                target="_blank"
+                style="color: var(--muted)"
+                >00966566257520</a
+              >
+            </div>
+          </div>
+          <div class="soc-circles">
+            <a class="soc" href="https://www.facebook.com/DrAsmaaElhaddad" target="_blank" title="Facebook">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a class="soc" href="https://www.instagram.com/dr.asmaaelhaddad/" target="_blank" title="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a class="soc" href="https://www.tiktok.com/@dr.asmaa.mohammed" target="_blank" title="TikTok">
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+            <a class="soc" href="https://www.snapchat.com/@asmaa_091272" target="_blank" title="Snapchat">
+              <i class="fa-brands fa-snapchat"></i>
+            </a>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ===================== FOOTER ===================== -->
-<footer class="site-footer">
-  <div class="footer-top">
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-lg-4 col-md-6">
-          <div class="footer-brand">
-            <h3 class="footer-logo">د. أسماء الحداد</h3>
-            <p class="footer-tagline">نائب أول جراحة التجميل والليزر</p>
-            <p class="footer-desc">نقدم حلولاً تجميلية متقدمة بأحدث التقنيات وأعلى معايير الجودة لنتائج طبيعية وآمنة.</p>
+    <!-- ══ FOOTER ══ -->
+    <footer>
+      <div class="f-grid rev">
+        <div>
+          <div class="f-logo-box">
+         <img src="../assets/logo.png" alt="">
           </div>
+          <p class="f-brand-txt">
+            د. أسماء الحداد نائب أول جراحة التجميل والليزر، تقدم حلولاً تجميلية
+            متقدمة تجمع بين الخبرة والدقة وأعلى معايير الجودة لتحقيق نتائج
+            طبيعية وآمنة.
+          </p>
         </div>
-        <div class="col-lg-2 col-md-6">
-          <h5 class="footer-heading">روابط سريعة</h5>
-          <ul class="footer-links">
-            <li><a href="#services">الخدمات</a></li>
+        <div class="f-col">
+          <h4>الصفحات</h4>
+          <ul>
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#services">خدماتنا</a></li>
             <li><a href="#about">عن الدكتورة</a></li>
-            <li><a href="#articles">المقالات</a></li>
-            <li><a href="#testimonials">آراء العملاء</a></li>
-            <li><a href="#contact">تواصلي معنا</a></li>
+            <li><a href="#articles">مقالات</a></li>
+            <li><a href="#reviews">آراء العملاء</a></li>
+            <li><a href="#contact">تواصل معنا</a></li>
           </ul>
         </div>
-        <div class="col-lg-3 col-md-6">
-          <h5 class="footer-heading">خدماتنا</h5>
-          <ul class="footer-links">
+        <div class="f-col">
+          <h4>خدماتنا</h4>
+          <ul>
             <li><a href="#services">تجميل وشد الوجه</a></li>
+            <li><a href="#services">شد البطن والرقبة</a></li>
             <li><a href="#services">حقن الفيلر والبوتوكس</a></li>
             <li><a href="#services">نحت الجسم وشفط الدهون</a></li>
-            <li><a href="#services">شد البطن</a></li>
-            <li><a href="#services">الميزوثيرابي والخلايا الجذعية</a></li>
+            <li><a href="#services">تجميل الثدي</a></li>
+            <li><a href="#services">الليزر والخلايا الجذعية</a></li>
           </ul>
         </div>
-        <div class="col-lg-3 col-md-6">
-          <h5 class="footer-heading">تواصلي معنا</h5>
-          <div class="footer-contact-item">
-            <i class="fab fa-whatsapp"></i>
-            <a href="https://wa.me/00966566257520" dir="ltr">+966 566 257 520</a>
-          </div>
-          <div class="footer-social mt-3">
-            <a href="https://www.facebook.com/DrAsmaaElhaddad" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/dr.asmaaelhaddad/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.tiktok.com/@dr.asmaa.mohammed" target="_blank"><i class="fab fa-tiktok"></i></a>
-            <a href="https://www.snapchat.com/@asmaa_091272" target="_blank"><i class="fab fa-snapchat-ghost"></i></a>
-            <a href="https://wa.me/00966566257520" target="_blank"><i class="fab fa-whatsapp"></i></a>
-          </div>
+        <div class="f-col">
+          <h4>تواصل معنا</h4>
+          <ul>
+            <li>
+              <i class="fi fa-solid fa-phone"></i>
+              <a href="tel:00966566257520">00966566257520</a>
+            </li>
+            <li>
+              <i class="fi fa-brands fa-whatsapp"></i>
+              <a href="https://wa.me/00966566257520" target="_blank">واتساب</a>
+            </li>
+            <li>
+              <i class="fi fa-brands fa-facebook-f"></i>
+              <a href="https://www.facebook.com/DrAsmaaElhaddad" target="_blank">Facebook</a>
+            </li>
+            <li>
+              <i class="fi fa-brands fa-instagram"></i>
+              <a href="https://www.instagram.com/dr.asmaaelhaddad/" target="_blank">Instagram</a>
+            </li>
+            <li>
+              <i class="fi fa-brands fa-tiktok"></i>
+              <a href="https://www.tiktok.com/@dr.asmaa.mohammed" target="_blank">TikTok</a>
+            </li>
+            <li>
+              <i class="fi fa-brands fa-snapchat"></i>
+              <a href="https://www.snapchat.com/@asmaa_091272" target="_blank">Snapchat</a>
+            </li>
+          </ul>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="container text-center">
-      <p>© 2025 د. أسماء الحداد — جميع الحقوق محفوظة</p>
-    </div>
-  </div>
-</footer>
+      <div class="f-bottom">
+        <span>All Rights Reserved Dr. Asmaa Elhaddad</span>
+        <span>© 2025 دكتورة أسماء الحداد – جراحة التجميل والليزر</span>
+      </div>
+    </footer>
+    <script>
+      // PRELOADER
+      window.addEventListener("load", () =>
+        setTimeout(
+          () => document.getElementById("preloader").classList.add("hide"),
+          2000,
+        ),
+      );
 
-<!-- Floating WhatsApp Button -->
-<a href="https://wa.me/00966566257520" class="whatsapp-float" target="_blank">
-  <i class="fab fa-whatsapp"></i>
-</a>
+      // CURSOR
+      const cur = document.getElementById("cur"),
+        crng = document.getElementById("crng");
+      let cx = 0,
+        cy = 0,
+        rx = 0,
+        ry = 0;
+      document.addEventListener("mousemove", (e) => {
+        cx = e.clientX;
+        cy = e.clientY;
+      });
+      (function a() {
+        cur.style.left = cx + "px";
+        cur.style.top = cy + "px";
+        rx += (cx - rx) * 0.13;
+        ry += (cy - ry) * 0.13;
+        crng.style.left = rx + "px";
+        crng.style.top = ry + "px";
+        requestAnimationFrame(a);
+      })();
 
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-<script src="main.js"></script>
-</body>
+      // HEADER SCROLL
+      const hdr = document.getElementById("hdr");
+      window.addEventListener("scroll", () =>
+        hdr.classList.toggle("scrolled", scrollY > 50),
+      );
+
+      // HAMBURGER
+      const hbg = document.getElementById("hbg"),
+        mnav = document.getElementById("mnav");
+      hbg.addEventListener("click", () => {
+        hbg.classList.toggle("open");
+        mnav.classList.toggle("open");
+      });
+      mnav.querySelectorAll("a").forEach((a) =>
+        a.addEventListener("click", () => {
+          hbg.classList.remove("open");
+          mnav.classList.remove("open");
+        }),
+      );
+
+      // SCROLL OBSERVER
+      const io = new IntersectionObserver(
+        (e) =>
+          e.forEach((x) => {
+            if (x.isIntersecting) x.target.classList.add("in");
+          }),
+        { threshold: 0.14 },
+      );
+      document
+        .querySelectorAll(".rev,.rev-l,.rev-r")
+        .forEach((el) => io.observe(el));
+
+      // WAVE ANIMATION
+      const wIO = new IntersectionObserver(
+        (e) =>
+          e.forEach((x) => {
+            x.isIntersecting
+              ? x.target.classList.add("animate")
+              : x.target.classList.remove("animate");
+          }),
+        { threshold: 0.3 },
+      );
+      const ws = document.getElementById("waveSec");
+      if (ws) wIO.observe(ws);
+
+      // HERO LINE
+      setTimeout(() => {
+        const hl = document.getElementById("hLine");
+        if (hl) hl.classList.add("go");
+      }, 1300);
+
+      // POPUP
+      const pov = document.getElementById("popOv");
+      document
+        .getElementById("openPop")
+        .addEventListener("click", () => pov.classList.add("open"));
+      document
+        .getElementById("popX")
+        .addEventListener("click", () => pov.classList.remove("open"));
+      pov.addEventListener("click", (e) => {
+        if (e.target === pov) pov.classList.remove("open");
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") pov.classList.remove("open");
+      });
+
+      // SMOOTH ANCHOR
+      document.querySelectorAll('a[href^="#"]').forEach((a) =>
+        a.addEventListener("click", (e) => {
+          e.preventDefault();
+          const t = document.querySelector(a.getAttribute("href"));
+          if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
+        }),
+      );
+
+      // WHATSAPP FORM
+      function sendToWhatsApp() {
+        const name = document.getElementById("cfName")?.value || "";
+        const phone = document.getElementById("cfPhone")?.value || "";
+        const service = document.getElementById("cfService")?.value || "";
+        const msg = document.getElementById("cfMsg")?.value || "";
+        if (!phone) {
+          alert("برجاء إدخال رقم الهاتف");
+          return;
+        }
+        const text = `مرحباً دكتورة أسماء،%0aالاسم: ${name}%0aالهاتف: ${phone}%0aالخدمة: ${service}%0aالرسالة: ${msg}`;
+        window.open(`https://wa.me/00966566257520?text=${text}`, "_blank");
+      }
+
+      // ACTIVE NAV ON SCROLL
+      const sections = document.querySelectorAll("section[id]");
+      const navLinks = document.querySelectorAll('nav a[href^="#"]');
+      window.addEventListener("scroll", () => {
+        let current = "";
+        sections.forEach((s) => {
+          if (scrollY >= s.offsetTop - 120) current = s.id;
+        });
+        navLinks.forEach((a) => {
+          a.classList.toggle(
+            "active",
+            a.getAttribute("href") === "#" + current,
+          );
+        });
+      });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js" integrity="sha512-Ysw1DcK1P+uYLqprEAzNQJP+J4hTx4t/3X2nbVwszao8wD+9afLjBQYjz7Uk4ADP+Er++mJoScI42ueGtQOzEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+  const testiSwiper = new Swiper('#testiSl', {
+  slidesPerView: 1,
+  spaceBetween: 20,
+  loop: true,
+  autoplay: {
+    delay: 4000,
+    disableOnInteraction: false,
+  },
+  pagination: {
+    el: '.testi-dots',
+    clickable: true,
+    bulletClass: 'dot',
+    bulletActiveClass: 'on',
+  },
+  breakpoints: {
+    640: { slidesPerView: 2 },
+    1024: { slidesPerView: 3 },
+  },
+});
+</script>
+  </body>
 </html>

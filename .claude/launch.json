@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dr-asma-2",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "5500", ".claude/worktrees/vibrant-northcutt/2"],
+      "port": 5500
+    }
+  ]
+}

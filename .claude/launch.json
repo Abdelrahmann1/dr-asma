@@ -2,10 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "dr-asma-2",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["serve", "-p", "5500", ".claude/worktrees/vibrant-northcutt/2"],
-      "port": 5500
+      "name": "dr-asma-root",
+      "runtimeExecutable": "/usr/bin/python3",
+      "runtimeArgs": ["-m", "http.server", "5501", "--directory", "/Users/click/Documents/GitHub/dr-asma"],
+      "port": 5501
     }
   ]
 }

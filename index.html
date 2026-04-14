@@ -8,6 +8,10 @@
       href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.css" integrity="sha512-pmAAV1X4Nh5jA9m+jcvwJXFQvCBi3T17aZ1KWkqXr7g/O2YMvO8rfaa5ETWDuBvRq6fbDjlw4jHL44jNTScaKg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -50,9 +54,9 @@
 
     <!-- SIDE BUTTONS -->
     <div class="side-btns">
-      <div class="side-expand" id="openPop" style="cursor:pointer;">
+      <div class="side-expand side-contact-btn" id="openPop" style="cursor:pointer;">
         <div class="side-icon"><i class="fa-regular fa-envelope"></i></div>
-        <span class="side-label">تواصل معنا</span>
+        <span class="side-contact-label">تواصل معنا</span>
       </div>
       <a class="side-expand" href="https://wa.me/00966566257520" target="_blank">
         <div class="side-icon"><i class="fa-brands fa-whatsapp"></i></div>
@@ -68,7 +72,11 @@
     <header id="hdr">
       <div class="hdr-logo">
         <div class="hdr-logo-text">
-     <img src="../assets/logo.png" alt="">
+          <img src="../assets/logo.png" alt="دكتورة أسماء الحداد">
+        </div>
+        <div class="hdr-logo-name">
+          <span class="hdr-n1">دكتورة</span>
+          <span class="hdr-n2">أسماء الحداد</span>
         </div>
       </div>
       <nav>
@@ -78,6 +86,7 @@
         <a href="#articles">مقالات</a>
         <a href="#reviews">آراء العملاء</a>
         <a href="#contact">تواصل معنا</a>
+        <a class="lang-btn" href="index-en.html"><span class="lang-flag">🌐</span> EN</a>
       </nav>
       <div class="hamburger" id="hbg"><span></span><span></span></div>
     </header>
@@ -89,6 +98,7 @@
       <a href="#articles">مقالات</a>
       <a href="#reviews">آراء العملاء</a>
       <a href="#contact">تواصل معنا</a>
+      <a class="lang-btn" href="index-en.html" style="margin-top:10px;align-self:center;"><span class="lang-flag">🌐</span> English</a>
     </div>
 
     <!-- ══ HERO ══ -->
@@ -128,7 +138,10 @@
       <!-- <div class="hero-svc-label">خدماتنا</div> -->
     </section>
 
-    <!-- WAVE -->
+ 
+    <!-- ══ SERVICES ══ -->
+    <section class="svc-section" id="services">
+         <!-- WAVE -->
     
     <div class="wave-sec" id="waveSec">
       <svg
@@ -149,8 +162,6 @@
         />
       </svg>
     </div>
-    <!-- ══ SERVICES ══ -->
-    <section class="svc-section" id="services">
       <div style="max-width: 1300px; margin: 0 auto">
         <div class="sec-head rev">
           <h2>خدماتنا</h2>
@@ -164,9 +175,10 @@
     <div class="card-front">
       <h1>01</h1>
       <h3>تجميل وشد الوجه</h3>
+      <p class="card-desc">د. أسماء الحداد الأفضل لنتائج طبيعية وآمنة تدوم طويلاً استعيدي شباب بشرتك مع تجميل وشد الوجه بأحدث التقنيات</p>
     </div>
     <div class="card-back">
-      <img src="assets/تجميل وشد الوجه.webp" loading="lazy" class="card-back" alt="تجميل وشد الوجه">
+      <img src="assets/تجميل وشد الوجه.webp" loading="lazy" decoding="async" class="card-back" alt="تجميل وشد الوجه">
     </div>
   </div>
 
@@ -174,9 +186,10 @@
     <div class="card-front">
       <h1>02</h1>
       <h3>علاج التجاعيد</h3>
+      <p class="card-desc">تخلصي من الخطوط الدقيقة والتجاعيد بفعالية مع أحدث العلاجات مع د. أسماء الحداد لبشرة أكثر شباباً ونضارة</p>
     </div>
     <div class="card-back">
-      <img src="assets/علاج التجاعيد.jpg" loading="lazy" class="card-back" alt="علاج التجاعيد">
+      <img src="assets/علاج التجاعيد.jpg" loading="lazy" decoding="async" class="card-back" alt="علاج التجاعيد">
     </div>
   </div>
 
@@ -184,9 +197,10 @@
     <div class="card-front">
       <h1>03</h1>
       <h3>شد البطن</h3>
+      <p class="card-desc">احصلي على بطن مشدود ومتناسق مع د. أسماء الحداد بأحدث تقنيات شد البطن وتحقيق القوام المثالي</p>
     </div>
     <div class="card-back">
-      <img src="assets/شد البطن.webp" loading="lazy" class="card-back" alt="شد البطن">
+      <img src="assets/شد البطن.webp" loading="lazy" decoding="async" class="card-back" alt="شد البطن">
     </div>
   </div>
 
@@ -194,9 +208,10 @@
     <div class="card-front">
       <h1>04</h1>
       <h3>شد الرقبة</h3>
+      <p class="card-desc">استعيدي مظهر رقبة مشدودة وشابة بدون ترهلات مع د. أسماء الحداد بأحدث تقنيات شد الرقبة</p>
     </div>
     <div class="card-back">
-      <img src="assets/شد الرقبة.jpg" loading="lazy" class="card-back" alt="شد الرقبة">
+      <img src="assets/شد الرقبة.jpg" loading="lazy" decoding="async" class="card-back" alt="شد الرقبة">
     </div>
   </div>
 
@@ -204,9 +219,10 @@
     <div class="card-front">
       <h1>05</h1>
       <h3>تجميل الشفاه</h3>
+      <p class="card-desc">احصلي على شفاه ممتلئة ومتناسقة مع د. أسماء الحداد لتجميل طبيعي يبرز جمالك بشكل رائع</p>
     </div>
     <div class="card-back">
-      <img src="assets/تجميل الشفاه.jpg" loading="lazy" class="card-back" alt="تجميل الشفاه">
+      <img src="assets/تجميل الشفاه.jpg" loading="lazy" decoding="async" class="card-back" alt="تجميل الشفاه">
     </div>
   </div>
 
@@ -214,9 +230,10 @@
     <div class="card-front">
       <h1>06</h1>
       <h3>تجميل وتحديد الفك</h3>
+      <p class="card-desc">أبرزي ملامح وجهك بتحديد الفك بشكل جذاب ومتناسق مع د. أسماء الحداد لنتائج طبيعية مذهلة</p>
     </div>
     <div class="card-back">
-      <img src="assets/تجميل وتحديد الفك.jpg" loading="lazy" class="card-back" alt="تجميل وتحديد الفك">
+      <img src="assets/تجميل وتحديد الفك.jpg" loading="lazy" decoding="async" class="card-back" alt="تجميل وتحديد الفك">
     </div>
   </div>
 
@@ -224,9 +241,10 @@
     <div class="card-front">
       <h1>07</h1>
       <h3>حقن الفيلر</h3>
+      <p class="card-desc">مع د. أسماء الحداد املئي الفراغات واستعيدي شباب بشرتك بحقن الفيلر لنتائج فورية وطبيعية</p>
     </div>
     <div class="card-back">
-      <img src="assets/حقن الفيلر.jpg" loading="lazy" class="card-back" alt="حقن الفيلر">
+      <img src="assets/حقن الفيلر.jpg" loading="lazy" decoding="async" class="card-back" alt="حقن الفيلر">
     </div>
   </div>
 
@@ -234,9 +252,10 @@
     <div class="card-front">
       <h1>08</h1>
       <h3>حقن البوتوكس</h3>
+      <p class="card-desc">تخلصي من التجاعيد التعبيرية بسهولة وفعالية مع د. أسماء الحداد لبشرة ناعمة وشابة</p>
     </div>
     <div class="card-back">
-      <img src="assets/حقن البوتوكس.png" loading="lazy" class="card-back" alt="حقن البوتوكس">
+      <img src="assets/حقن البوتوكس.png" loading="lazy" decoding="async" class="card-back" alt="حقن البوتوكس">
     </div>
   </div>
 
@@ -244,9 +263,10 @@
     <div class="card-front">
       <h1>09</h1>
       <h3>تنظيف البشرة</h3>
+      <p class="card-desc">امنحي بشرتك إشراقة ونقاء عميق مع جلسات تنظيف البشرة المتخصصة مع د. أسماء الحداد</p>
     </div>
     <div class="card-back">
-      <img src="assets/تنظيف  البشرة.jpg" loading="lazy" class="card-back" alt="تنظيف البشرة">
+      <img src="assets/تنظيف  البشرة.jpg" loading="lazy" decoding="async" class="card-back" alt="تنظيف البشرة">
     </div>
   </div>
 
@@ -254,9 +274,10 @@
     <div class="card-front">
       <h1>10</h1>
       <h3>سكين بوستر</h3>
+      <p class="card-desc">جددّي بشرتك بترطيب عميق وبشرة مشرقة وحيوية مع د. أسماء الحداد الأفضل لبشرة متجددة</p>
     </div>
     <div class="card-back">
-      <img src="assets/سكين بوستر.jpg" loading="lazy" class="card-back" alt="سكين بوستر">
+      <img src="assets/سكين بوستر.jpg" loading="lazy" decoding="async" class="card-back" alt="سكين بوستر">
     </div>
   </div>
 
@@ -264,9 +285,10 @@
     <div class="card-front">
       <h1>11</h1>
       <h3>حقن الميزوثيرابي والخلايا الجذعية</h3>
+      <p class="card-desc">عززي صحة بشرتك وشعرك بالميزوثيرابي والخلايا الجذعية مع د. أسماء الحداد لنتائج مبهرة</p>
     </div>
     <div class="card-back">
-      <img src="assets/حقن الميزوثيرابي.jpg" loading="lazy" class="card-back" alt="حقن الميزوثيرابي والخلايا الجذعية">
+      <img src="assets/حقن الميزوثيرابي.jpg" loading="lazy" decoding="async" class="card-back" alt="حقن الميزوثيرابي والخلايا الجذعية">
     </div>
   </div>
 
@@ -274,9 +296,10 @@
     <div class="card-front">
       <h1>12</h1>
       <h3>نحت الرقبة وإزالة اللغد</h3>
+      <p class="card-desc">تخلصي من اللغد واحصلي على رقبة محددة وجذابة مع د. أسماء الحداد بأحدث تقنيات النحت</p>
     </div>
     <div class="card-back">
-      <img src="assets/ازالة اللغد.jpg" loading="lazy" class="card-back" alt="نحت الرقبة وإزالة اللغد">
+      <img src="assets/ازالة اللغد.jpg" loading="lazy" decoding="async" class="card-back" alt="نحت الرقبة وإزالة اللغد">
     </div>
   </div>
 
@@ -284,9 +307,10 @@
     <div class="card-front">
       <h1>13</h1>
       <h3>نحت الجسم وشفط الدهون</h3>
+      <p class="card-desc">احصلي على قوام مثالي ومتناسق مع تقنيات نحت الجسم الحديثة وشفط الدهون مع د. أسماء الحداد</p>
     </div>
     <div class="card-back">
-      <img src="assets/نحت الجسم.jpg" loading="lazy" class="card-back" alt="نحت الجسم وشفط الدهون">
+      <img src="assets/نحت الجسم.jpg" loading="lazy" decoding="async" class="card-back" alt="نحت الجسم وشفط الدهون">
     </div>
   </div>
 
@@ -294,9 +318,10 @@
     <div class="card-front">
       <h1>14</h1>
       <h3>تجميل الثدي</h3>
+      <p class="card-desc">استعيدي ثقتك بأنوثتك مع عمليات تجميل الثدي المتقدمة مع د. أسماء الحداد لنتائج طبيعية</p>
     </div>
     <div class="card-back">
-      <img src="assets/تجميل الثدي.webp" loading="lazy" class="card-back" alt="تجميل الثدي">
+      <img src="assets/تجميل الثدي.webp" loading="lazy" decoding="async" class="card-back" alt="تجميل الثدي">
     </div>
   </div>
 
@@ -320,7 +345,7 @@
             "
           >
             <!-- Decorative background -->
-            <img src="../assets/about.jpeg" alt="">
+            <img src="../assets/about.jpeg" alt="" loading="lazy" decoding="async">
           </div>
           <div class="about-badge">
             <div class="about-badge-box">
@@ -576,6 +601,10 @@
       <div class="contact-in">
         <!-- Form -->
         <div class="rev-l">
+          <h2 class="cf-title">
+            <span class="bar"></span>
+           ارسل طلبك الان
+          </h2>
           <div class="cf">
             <div class="cf-row">
               <div
@@ -612,7 +641,7 @@
             </div>
             <div class="cf-submit">
               <button class="cf-btn" onclick="sendToWhatsApp()">
-                إرسال عبر واتساب
+                إرسال
               </button>
             </div>
           </div>
@@ -743,32 +772,25 @@
         ),
       );
 
-      // CURSOR
-      const cur = document.getElementById("cur"),
-        crng = document.getElementById("crng");
-      let cx = 0,
-        cy = 0,
-        rx = 0,
-        ry = 0;
-      document.addEventListener("mousemove", (e) => {
-        cx = e.clientX;
-        cy = e.clientY;
-      });
-      (function a() {
-        cur.style.left = cx + "px";
-        cur.style.top = cy + "px";
-        rx += (cx - rx) * 0.13;
-        ry += (cy - ry) * 0.13;
-        crng.style.left = rx + "px";
-        crng.style.top = ry + "px";
-        requestAnimationFrame(a);
-      })();
+      // CURSOR — only on true pointer devices (skips mobile entirely)
+      if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+        const cur = document.getElementById("cur"),
+          crng = document.getElementById("crng");
+        let cx = 0, cy = 0, rx = 0, ry = 0;
+        document.addEventListener("mousemove", (e) => { cx = e.clientX; cy = e.clientY; }, { passive: true });
+        (function loop() {
+          cur.style.left = cx + "px";
+          cur.style.top = cy + "px";
+          rx += (cx - rx) * 0.13;
+          ry += (cy - ry) * 0.13;
+          crng.style.left = rx + "px";
+          crng.style.top = ry + "px";
+          requestAnimationFrame(loop);
+        })();
+      }
 
-      // HEADER SCROLL
+      // HEADER + ACTIVE NAV — single throttled scroll handler
       const hdr = document.getElementById("hdr");
-      window.addEventListener("scroll", () =>
-        hdr.classList.toggle("scrolled", scrollY > 50),
-      );
 
       // HAMBURGER
       const hbg = document.getElementById("hbg"),
@@ -853,21 +875,20 @@
         window.open(`https://wa.me/00966566257520?text=${text}`, "_blank");
       }
 
-      // ACTIVE NAV ON SCROLL
+      // ACTIVE NAV — combined with header scroll, throttled via rAF
       const sections = document.querySelectorAll("section[id]");
       const navLinks = document.querySelectorAll('nav a[href^="#"]');
-      window.addEventListener("scroll", () => {
+      let scrollTick = false;
+      function handleScroll() {
+        hdr.classList.toggle("scrolled", scrollY > 50);
         let current = "";
-        sections.forEach((s) => {
-          if (scrollY >= s.offsetTop - 120) current = s.id;
-        });
-        navLinks.forEach((a) => {
-          a.classList.toggle(
-            "active",
-            a.getAttribute("href") === "#" + current,
-          );
-        });
-      });
+        sections.forEach((s) => { if (scrollY >= s.offsetTop - 120) current = s.id; });
+        navLinks.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + current));
+        scrollTick = false;
+      }
+      window.addEventListener("scroll", () => {
+        if (!scrollTick) { scrollTick = true; requestAnimationFrame(handleScroll); }
+      }, { passive: true });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js" integrity="sha512-Ysw1DcK1P+uYLqprEAzNQJP+J4hTx4t/3X2nbVwszao8wD+9afLjBQYjz7Uk4ADP+Er++mJoScI42ueGtQOzEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
@@ -891,5 +912,11 @@
   },
 });
 </script>
+
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <a class="wa-fab" href="https://wa.me/00966566257520" target="_blank" aria-label="واتساب">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
   </body>
 </html>

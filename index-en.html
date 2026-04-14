@@ -1,0 +1,992 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dr. Asmaa Elhaddad – Senior Consultant Plastic & Laser Surgery</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.css" integrity="sha512-pmAAV1X4Nh5jA9m+jcvwJXFQvCBi3T17aZ1KWkqXr7g/O2YMvO8rfaa5ETWDuBvRq6fbDjlw4jHL44jNTScaKg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+      /* ═══════════════════════════════════════
+         English / LTR overrides for index-en.html
+         Overrides style.css RTL defaults
+      ═══════════════════════════════════════ */
+
+      /* 1 — font + force LTR direction */
+      :root { --font: 'Poppins', sans-serif; }
+      body  { direction: ltr !important; font-family: var(--font) !important; }
+
+      /* 2 — Header: logo left, nav center, hamburger right */
+      header { direction: ltr; }
+      .hdr-logo { order: 0; }
+      nav       { order: 1; }
+      .hamburger{ order: 2; }
+      /* lang btn inside nav flows naturally LTR */
+      nav .lang-btn { margin-left: 6px; }
+
+      /* 3 — Nav links: left-to-right, text left */
+      nav a { direction: ltr; }
+
+      /* 4 — Mobile nav */
+      .mobile-nav { direction: ltr; }
+      .mobile-nav a { text-align: center; }
+
+      /* 5 — Hero: force LTR so columns read: title | image | description */
+      .hero-content { direction: ltr !important; }
+      .hero-right h1 {
+        border-width: 0 0 0 4px !important;   /* border-left instead of border-right */
+        padding-right: 0 !important;
+        padding-left: 1rem !important;
+        text-align: left;
+      }
+      .hero-bracket p { text-align: left; }
+
+      /* 6 — Section headings: gold bar on LEFT of text */
+      .sec-head {
+        flex-direction: row !important;
+        justify-content: flex-start !important;
+      }
+      .about-head { flex-direction: row !important; }
+      .contact-r h2,
+      .cf-title   { flex-direction: row !important; }
+
+      /* 7 — About section: image on left, text on right (LTR grid order) */
+      .about-in { direction: ltr; }
+      .about-txt { text-align: left; }
+
+      /* 8 — Services cards text */
+      .card-front h1,
+      .card-front h3 { text-align: left; }
+      .card-desc {
+        text-align: left;
+        font-size: 0.72rem !important;
+        -webkit-line-clamp: 3;
+      }
+
+      /* 9 — Articles */
+      .articles-in { direction: ltr; }
+      .art-title { text-align: left; }
+      .art-arr   { justify-content: flex-end; }
+
+      /* 10 — Reviews */
+      .testi-txt { text-align: left; }
+
+      /* 11 — Contact form */
+      .cf-f input,
+      .cf-f textarea,
+      .cf-f select { text-align: left !important; direction: ltr; }
+      .contact-r p { text-align: left; }
+
+      /* 12 — Footer */
+      .f-grid      { direction: ltr; }
+      .f-col h4,
+      .f-col ul li,
+      .f-brand-txt { text-align: left; }
+      .f-bottom    { direction: ltr; flex-direction: row !important; }
+
+      /* 13 — Side buttons: keep on left, expand to the right */
+      .side-btns    { left: 0; right: auto; align-items: flex-start; }
+      .side-expand  { border-left: none !important; border-right: 1px solid rgba(152,123,67,0.25); flex-direction: row-reverse; }
+      .side-expand:hover { width: 155px; }
+    </style>
+  </head>
+  <body>
+    <!-- PRELOADER -->
+    <div id="preloader">
+      <div class="pre-logo">Dr. Asmaa</div>
+      <div class="pre-bar"><span></span></div>
+    </div>
+
+    <!-- CURSOR -->
+    <div class="cur" id="cur"></div>
+    <div class="cur-ring" id="crng"></div>
+
+    <!-- POPUP -->
+    <div class="pop-ov" id="popOv">
+      <div class="pop-box">
+        <button class="pop-x" id="popX">✕</button>
+        <h3>Contact Us</h3>
+        <div class="pop-form">
+          <input type="text" placeholder="Full Name *" />
+          <input type="tel" placeholder="Phone Number *" />
+          <input type="email" placeholder="Email Address" />
+          <select>
+            <option value="" disabled selected>Service Required</option>
+            <option>Facial Lift & Rejuvenation</option>
+            <option>Filler Injections</option>
+            <option>Botox Injections</option>
+            <option>Tummy Tuck</option>
+            <option>Body Sculpting & Liposuction</option>
+            <option>Breast Augmentation</option>
+            <option>Other</option>
+          </select>
+          <textarea placeholder="Your message..."></textarea>
+          <button onclick="sendToWhatsApp()">Send via WhatsApp</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDE BUTTONS -->
+    <div class="side-btns">
+      <div class="side-expand side-contact-btn" id="openPop" style="cursor:pointer;">
+        <div class="side-icon"><i class="fa-regular fa-envelope"></i></div>
+        <span class="side-contact-label">Contact</span>
+      </div>
+      <a class="side-expand" href="https://wa.me/00966566257520" target="_blank">
+        <div class="side-icon"><i class="fa-brands fa-whatsapp"></i></div>
+        <span class="side-label">WhatsApp</span>
+      </a>
+      <a class="side-expand" href="tel:00966566257520">
+        <div class="side-icon"><i class="fa-solid fa-phone"></i></div>
+        <span class="side-label">Call</span>
+      </a>
+    </div>
+
+    <!-- HEADER -->
+    <header id="hdr">
+      <div class="hdr-logo">
+        <div class="hdr-logo-text">
+          <img src="../assets/logo.png" alt="Dr. Asmaa Elhaddad">
+        </div>
+        <div class="hdr-logo-name" style="border-right:none; border-left:1px solid rgba(152,123,67,0.35); padding:0 0 0 6px;">
+          <span class="hdr-n1">Doctor</span>
+          <span class="hdr-n2">Asmaa Elhaddad</span>
+        </div>
+      </div>
+      <nav>
+        <a href="#home" class="active">Home</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#articles">Articles</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+        <a class="lang-btn" href="index.html"><span class="lang-flag">🌐</span> عربي</a>
+      </nav>
+      <div class="hamburger" id="hbg"><span></span><span></span></div>
+    </header>
+
+    <div class="mobile-nav" id="mnav">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#articles">Articles</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+      <a class="lang-btn" href="index.html" style="margin-top:10px;align-self:center;"><span class="lang-flag">🌐</span> عربي</a>
+    </div>
+
+    <!-- ══ HERO ══ -->
+    <section class="hero" id="home">
+      <div class="hero-watermark">Dr. Asmaa</div>
+      <div class="hero-line" id="hLine">
+        <svg viewBox="0 0 800 500" preserveAspectRatio="none">
+          <path class="h-line" d="M800,0 L0,500" />
+        </svg>
+      </div>
+      <div class="hero-content">
+        <div class="hero-right">
+          <h1>
+            <span class="dr-small">Doctor</span>
+            Asmaa Elhaddad
+          </h1>
+        </div>
+        <div class="hero-img-wrap">
+          <div class="hero-icon"></div>
+        </div>
+        <div class="hero-left">
+          <div class="hero-bracket">
+            <p>
+              Dr. Asmaa Elhaddad, Senior Consultant in Plastic Surgery, delivers
+              advanced aesthetic solutions combining expertise and precision.
+              Specialising in laser treatments, body sculpting, burn care, and
+              filler &amp; Botox injections for natural, safe results.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SERVICES ══ -->
+    <section class="svc-section" id="services">
+      <!-- WAVE -->
+      <div class="wave-sec" id="waveSec">
+        <svg
+          viewBox="0 0 1400 130"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <linearGradient id="wg" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#6b5530" />
+              <stop offset="50%" stop-color="#987b43" />
+              <stop offset="100%" stop-color="#c4a96e" />
+            </linearGradient>
+          </defs>
+          <path
+            class="wp"
+            d="M0,65 C200,15 350,115 560,65 C770,15 900,115 1120,65 C1280,25 1360,85 1400,65"
+          />
+        </svg>
+      </div>
+      <div style="max-width: 1300px; margin: 0 auto">
+        <div class="sec-head rev">
+          <h2>Our Services</h2>
+          <div class="gold-bar4"></div>
+        </div>
+
+        <div class="cards">
+
+          <div class="card">
+            <div class="card-front">
+              <h1>01</h1>
+              <h3>Facial Lift & Rejuvenation</h3>
+              <p class="card-desc">Dr. Asmaa Elhaddad delivers the best natural, long-lasting results. Restore your skin's youth with the latest facial lift techniques.</p>
+            </div>
+            <div class="card-back">
+              <img src="assets/تجميل وشد الوجه.webp" loading="lazy" decoding="async" class="card-back" alt="Facial Lift & Rejuvenation">
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-front">
+              <h1>02</h1>
+              <h3>Wrinkle Treatment</h3>
+              <p class="card-desc">Effectively eliminate fine lines and wrinkles with the latest treatments from Dr. Asmaa Elhaddad for younger, more radiant skin.</p>
+            </div>
+            <div class="card-back">
+              <img src="assets/علاج التجاعيد.jpg" loading="lazy" decoding="async" class="card-back" alt="Wrinkle Treatment">
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-front">
+              <h1>03</h1>
+              <h3>Tummy Tuck</h3>
+              <p class="card-desc">Achieve a firm, contoured abdomen with Dr. Asmaa Elhaddad using the latest tummy tuck techniques for your ideal figure.</p>
+            </div>
+            <div class="card-back">
+              <img src="assets/شد البطن.webp" loading="lazy" decoding="async" class="card-back" alt="Tummy Tuck">
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-front">
+              <h1>04</h1>
+              <h3>Neck Lift</h3>
+              <p class="card-desc">Restore a firm, youthful neck without sagging with Dr. Asmaa Elhaddad using the latest neck lift techniques.</p>
+            </div>
+            <div class="card-back">
+              <img src="assets/شد الرقبة.jpg" loading="lazy" decoding="async" class="card-back" alt="Neck Lift">
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-front">
+              <h1>05</h1>
+              <h3>Lip Enhancement</h3>
+              <p class="card-desc">Achieve fuller, perfectly shaped lips with Dr. Asmaa Elhaddad for a natural enhancement that beautifully highlights your features.</p>
+            </div>
+            <div class="card-back">
+              <img src="assets/تجميل الشفاه.jpg" loading="lazy" decoding="async" class="card-back" alt="Lip Enhancement">
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-front">
+              <h1>06</h1>
+              <h3>Jawline Contouring</h3>
+              <p class="card-desc">Define your facial features with attractive jawline contouring from Dr. Asmaa Elhaddad for stunning natural results.</p>
+            </div>
+            <div class="card-back">
+              <img src="assets/تجميل وتحديد الفك.jpg" loading="lazy" decoding="async" class="card-back" alt="Jawline Contouring">
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-front">
+              <h1>07</h1>
+              <h3>Filler Injections</h3>
+              <p class="card-desc">With Dr. Asmaa Elhaddad, restore volume and youthful skin with filler injections for immediate, natural-looking results.</p>
+            </div>
+            <div class="card-back">
+              <img src="assets/حقن الفيلر.jpg" loading="lazy" decoding="async" class="card-back" alt="Filler Injections">
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-front">
+              <h1>08</h1>
+              <h3>Botox Injections</h3>
+              <p class="card-desc">Easily and effectively eliminate expression lines with Dr. Asmaa Elhaddad for smooth, younger-looking skin.</p>
+            </div>
+            <div class="card-back">
+              <img src="assets/حقن البوتوكس.png" loading="lazy" decoding="async" class="card-back" alt="Botox Injections">
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-front">
+              <h1>09</h1>
+              <h3>Skin Cleansing</h3>
+              <p class="card-desc">Give your skin a deep glow and purity with specialised skin cleansing sessions from Dr. Asmaa Elhaddad.</p>
+            </div>
+            <div class="card-back">
+              <img src="assets/تنظيف  البشرة.jpg" loading="lazy" decoding="async" class="card-back" alt="Skin Cleansing">
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-front">
+              <h1>10</h1>
+              <h3>Skin Booster</h3>
+              <p class="card-desc">Revitalise your skin with deep hydration for a radiant, vibrant complexion with Dr. Asmaa Elhaddad.</p>
+            </div>
+            <div class="card-back">
+              <img src="assets/سكين بوستر.jpg" loading="lazy" decoding="async" class="card-back" alt="Skin Booster">
+            </div>
+          </div>
+
+          <div class="card" id="card-11">
+            <div class="card-front">
+              <h1>11</h1>
+              <h3>Mesotherapy & Stem Cells</h3>
+              <p class="card-desc">Boost your skin and hair health with mesotherapy and stem cell injections from Dr. Asmaa Elhaddad for impressive results.</p>
+            </div>
+            <div class="card-back">
+              <img src="assets/حقن الميزوثيرابي.jpg" loading="lazy" decoding="async" class="card-back" alt="Mesotherapy & Stem Cells">
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-front">
+              <h1>12</h1>
+              <h3>Neck Sculpting & Double Chin Removal</h3>
+              <p class="card-desc">Get rid of your double chin and achieve a defined, attractive neck with Dr. Asmaa Elhaddad using the latest sculpting techniques.</p>
+            </div>
+            <div class="card-back">
+              <img src="assets/ازالة اللغد.jpg" loading="lazy" decoding="async" class="card-back" alt="Neck Sculpting & Double Chin Removal">
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-front">
+              <h1>13</h1>
+              <h3>Body Sculpting & Liposuction</h3>
+              <p class="card-desc">Achieve the perfect, contoured figure with modern body sculpting and liposuction techniques from Dr. Asmaa Elhaddad.</p>
+            </div>
+            <div class="card-back">
+              <img src="assets/نحت الجسم.jpg" loading="lazy" decoding="async" class="card-back" alt="Body Sculpting & Liposuction">
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-front">
+              <h1>14</h1>
+              <h3>Breast Augmentation</h3>
+              <p class="card-desc">Restore your confidence with advanced breast augmentation procedures from Dr. Asmaa Elhaddad for natural-looking results.</p>
+            </div>
+            <div class="card-back">
+              <img src="assets/تجميل الثدي.webp" loading="lazy" decoding="async" class="card-back" alt="Breast Augmentation">
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ ABOUT ══ -->
+    <section class="about-sec" id="about">
+      <div class="about-in">
+        <div class="about-img rev-l">
+          <div
+            style="
+              min-height: 480px;
+              max-height: 90vh;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              position: relative;
+              overflow: hidden;
+            "
+          >
+            <img src="../assets/about.jpeg" alt="Dr. Asmaa Elhaddad" loading="lazy" decoding="async">
+          </div>
+          <div class="about-badge">
+            <div class="about-badge-box">
+              <div class="b1">PLASTIC SURGERY</div>
+              <div class="b2">Senior Consultant</div>
+              <div class="b3">LASER & BODY SCULPTING</div>
+            </div>
+            <div class="dr-badge">
+              <div class="bar"></div>
+              <div class="dr">Dr.</div>
+              <div class="nm">ASMAA ELHADDAD</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-r rev-r">
+          <!-- Decorative beauty icon -->
+          <div class="beauty-icon">
+            <svg viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+              <polygon
+                points="45,5 52,32 80,32 57,50 65,78 45,60 25,78 33,50 10,32 38,32"
+                fill="none"
+                stroke="#987b43"
+                stroke-width="2"
+                stroke-linejoin="round"
+                opacity=".6"
+              />
+              <polygon
+                points="45,18 49,33 65,33 53,42 57,58 45,49 33,58 37,42 25,33 41,33"
+                fill="none"
+                stroke="#c4a96e"
+                stroke-width="1"
+                stroke-linejoin="round"
+                opacity=".4"
+              />
+              <circle
+                cx="45"
+                cy="45"
+                r="8"
+                fill="none"
+                stroke="#987b43"
+                stroke-width="1.5"
+                opacity=".5"
+              />
+            </svg>
+          </div>
+          <div class="about-head">
+            <div class="bar"></div>
+            <h2>About Dr. Asmaa</h2>
+          </div>
+          <p class="about-txt">
+            Dr. Asmaa Elhaddad believes that true beauty begins with building self-confidence.
+            She ensures precise consultations tailored to each individual's unique needs.
+            She relies on the latest medical technologies and adheres to the highest quality
+            standards to deliver balanced, natural-looking results.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ ARTICLES ══ -->
+    <section class="articles-sec" id="articles">
+      <div class="articles-in">
+        <div class="sec-head rev">
+          <h2>Articles</h2>
+          <div class="gold-bar4"></div>
+        </div>
+        <div class="articles-grid">
+          <div class="art-c rev" data-d="1">
+            <div class="art-num">01</div>
+            <div class="art-title">The Difference Between Filler and Botox</div>
+            <div class="art-arr"><span>↗</span></div>
+          </div>
+
+          <div class="art-c rev" data-d="2">
+            <div class="art-num">02</div>
+            <div class="art-title">Everything You Need to Know About Liposuction</div>
+            <div class="art-arr"><span>↗</span></div>
+          </div>
+
+          <div class="art-c rev" data-d="3">
+            <div class="art-num">03</div>
+            <div class="art-title">Tummy Tuck: Eliminating Sagging & Excess Skin</div>
+            <div class="art-arr"><span>↗</span></div>
+          </div>
+
+          <div class="art-c rev" data-d="4">
+            <div class="art-num">04</div>
+            <div class="art-title">Double Chin Removal & Neck Sculpting Explained</div>
+            <div class="art-arr"><span>↗</span></div>
+          </div>
+
+          <div class="art-c rev" data-d="1">
+            <div class="art-num">05</div>
+            <div class="art-title">Mesotherapy & Stem Cell Injections for Hair</div>
+            <div class="art-arr"><span>↗</span></div>
+          </div>
+
+          <div class="art-c rev" data-d="2">
+            <div class="art-num">06</div>
+            <div class="art-title">Filler & Botox: More Than Aesthetics — Natural Collagen Stimulation</div>
+            <div class="art-arr"><span>↗</span></div>
+          </div>
+
+          <div class="art-c rev" data-d="3">
+            <div class="art-num">07</div>
+            <div class="art-title">Common Causes of Hair Loss You Should Avoid</div>
+            <div class="art-arr"><span>↗</span></div>
+          </div>
+
+          <div class="art-c rev" data-d="4">
+            <div class="art-num">08</div>
+            <div class="art-title">Breast Reduction: The Effective Solution for Restoring Comfort & Confidence</div>
+            <div class="art-arr"><span>↗</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ REVIEWS ══ -->
+    <section class="testi-sec" id="reviews">
+      <div class="testi-wrap">
+        <div class="sec-head rev">
+          <h2>Client Reviews</h2>
+          <div class="gold-bar4"></div>
+        </div>
+        <div class="swiper testi-slider" id="testiSl">
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testi-c">
+                <div class="stars">★★★★★</div>
+                <p class="testi-txt">The treatment was very professional and the doctor explained everything before she started.</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="testi-c">
+                <div class="stars">★★★★★</div>
+                <p class="testi-txt">A very reputable clinic with clear expertise. The results were highly satisfying.</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="testi-c">
+                <div class="stars">★★★★★</div>
+                <p class="testi-txt">The team was very cooperative and the follow-up after the session was excellent.</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="testi-c">
+                <div class="stars">★★★★★</div>
+                <p class="testi-txt">I felt safe and fully reassured during the procedure — that made a huge difference for me.</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="testi-c">
+                <div class="stars">★★★★★</div>
+                <p class="testi-txt">One of the best clinics I've visited in terms of cleanliness and attention to detail.</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="testi-c">
+                <div class="stars">★★★★★</div>
+                <p class="testi-txt">I was nervous at first, but the doctor put me at ease and the results exceeded my expectations.</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="testi-c">
+                <div class="stars">★★★★★</div>
+                <p class="testi-txt">Their attention to the smallest details — including post-session follow-up — was remarkable.</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="testi-c">
+                <div class="stars">★★★★★</div>
+                <p class="testi-txt">Liposuction truly transformed my body shape and boosted my self-confidence.</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="testi-c">
+                <div class="stars">★★★★★</div>
+                <p class="testi-txt">The doctor is highly skilled and pays close attention to every detail.</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="testi-c">
+                <div class="stars">★★★★★</div>
+                <p class="testi-txt">Thank you Dr. Asmaa and her team — wishing them continued success.</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="testi-c">
+                <div class="stars">★★★★★</div>
+                <p class="testi-txt">The best aesthetic clinic in Saudi Arabia.</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="testi-c">
+                <div class="stars">★★★★★</div>
+                <p class="testi-txt">I was afraid of filler injections but the doctor was amazing — everything was more than perfect.</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="testi-c">
+                <div class="stars">★★★★★</div>
+                <p class="testi-txt">A big thank you to Dr. Asmaa — wishing her even greater success and progress.</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="testi-c">
+                <div class="stars">★★★★★</div>
+                <p class="testi-txt">I had a facial lift and wrinkle treatment — the result looked very natural, no exaggeration at all.</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="testi-c">
+                <div class="stars">★★★★★</div>
+                <p class="testi-txt">The neck lift gave me a noticeably younger appearance. Thank you, Doctor!</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="testi-c">
+                <div class="stars">★★★★★</div>
+                <p class="testi-txt">What I loved most is that they always focus on achieving natural-looking results.</p>
+              </div>
+            </div>
+
+          </div>
+          <!-- Swiper Pagination Dots -->
+          <div class="swiper-pagination testi-dots"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ CONTACT ══ -->
+    <section class="contact-sec" id="contact">
+      <div class="contact-in">
+        <!-- Form -->
+        <div class="rev-l">
+          <h2 class="cf-title">
+            <span class="bar"></span>
+            Send Your Request
+          </h2>
+          <div class="cf">
+            <div class="cf-row">
+              <div
+                class="cf-f"
+                style="border-left: 1px solid rgba(255, 255, 255, 0.35)"
+              >
+                <input type="text" id="cfName" placeholder="Full Name" />
+              </div>
+              <div class="cf-f">
+                <input type="tel" id="cfPhone" placeholder="Phone *" />
+              </div>
+            </div>
+            <div class="cf-f full">
+              <select id="cfService">
+                <option value="" disabled selected>Service Required</option>
+                <option>Facial Lift & Rejuvenation</option>
+                <option>Wrinkle Treatment</option>
+                <option>Tummy Tuck</option>
+                <option>Neck Lift</option>
+                <option>Lip Enhancement</option>
+                <option>Jawline Contouring</option>
+                <option>Filler Injections</option>
+                <option>Botox Injections</option>
+                <option>Skin Cleansing / Skin Booster</option>
+                <option>Mesotherapy & Stem Cells</option>
+                <option>Neck Sculpting & Double Chin Removal</option>
+                <option>Body Sculpting & Liposuction</option>
+                <option>Breast Augmentation</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="cf-f full" style="padding: 14px 0">
+              <textarea id="cfMsg" placeholder="Your message"></textarea>
+            </div>
+            <div class="cf-submit">
+              <button class="cf-btn" onclick="sendToWhatsApp()">
+                Send
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div class="contact-r rev-r">
+          <h2>
+            <span class="bar"></span>
+            Contact Us
+          </h2>
+          <p>
+            We are delighted to hear from you for a specialised consultation with Dr. Asmaa Elhaddad.
+            Our team is always ready to answer all your enquiries and support you before,
+            during, and after any aesthetic procedure.
+          </p>
+          <div class="contact-info">
+            <div class="contact-info-item">
+              <span class="ci-icon">📞</span>
+              <a href="tel:00966566257520" style="color: var(--muted)">00966566257520</a>
+            </div>
+            <div class="contact-info-item">
+              <i class="fi fa-brands fa-whatsapp"></i>
+              <a
+                href="https://wa.me/00966566257520"
+                target="_blank"
+                style="color: var(--muted)"
+                >00966566257520</a
+              >
+            </div>
+          </div>
+          <div class="soc-circles">
+            <a class="soc" href="https://www.facebook.com/DrAsmaaElhaddad" target="_blank" title="Facebook">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a class="soc" href="https://www.instagram.com/dr.asmaaelhaddad/" target="_blank" title="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a class="soc" href="https://www.tiktok.com/@dr.asmaa.mohammed" target="_blank" title="TikTok">
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+            <a class="soc" href="https://www.snapchat.com/@asmaa_091272" target="_blank" title="Snapchat">
+              <i class="fa-brands fa-snapchat"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ FOOTER ══ -->
+    <footer>
+      <div class="f-grid rev">
+        <div>
+          <div class="f-logo-box">
+            <img src="../assets/logo.png" alt="Dr. Asmaa Elhaddad">
+          </div>
+          <p class="f-brand-txt">
+            Dr. Asmaa Elhaddad, Senior Consultant in Plastic & Laser Surgery,
+            delivers advanced aesthetic solutions combining expertise, precision,
+            and the highest quality standards for natural, safe results.
+          </p>
+        </div>
+        <div class="f-col">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#articles">Articles</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="f-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">Facial Lift & Rejuvenation</a></li>
+            <li><a href="#services">Tummy Tuck & Neck Lift</a></li>
+            <li><a href="#services">Filler & Botox Injections</a></li>
+            <li><a href="#services">Body Sculpting & Liposuction</a></li>
+            <li><a href="#services">Breast Augmentation</a></li>
+            <li><a href="#services">Laser & Stem Cells</a></li>
+          </ul>
+        </div>
+        <div class="f-col">
+          <h4>Contact Us</h4>
+          <ul>
+            <li>
+              <i class="fi fa-solid fa-phone"></i>
+              <a href="tel:00966566257520">00966566257520</a>
+            </li>
+            <li>
+              <i class="fi fa-brands fa-whatsapp"></i>
+              <a href="https://wa.me/00966566257520" target="_blank">WhatsApp</a>
+            </li>
+            <li>
+              <i class="fi fa-brands fa-facebook-f"></i>
+              <a href="https://www.facebook.com/DrAsmaaElhaddad" target="_blank">Facebook</a>
+            </li>
+            <li>
+              <i class="fi fa-brands fa-instagram"></i>
+              <a href="https://www.instagram.com/dr.asmaaelhaddad/" target="_blank">Instagram</a>
+            </li>
+            <li>
+              <i class="fi fa-brands fa-tiktok"></i>
+              <a href="https://www.tiktok.com/@dr.asmaa.mohammed" target="_blank">TikTok</a>
+            </li>
+            <li>
+              <i class="fi fa-brands fa-snapchat"></i>
+              <a href="https://www.snapchat.com/@asmaa_091272" target="_blank">Snapchat</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="f-bottom">
+        <span>© 2025 Dr. Asmaa Elhaddad – Plastic Surgery & Laser</span>
+        <span>All Rights Reserved Dr. Asmaa Elhaddad</span>
+      </div>
+    </footer>
+
+    <script>
+      // PRELOADER
+      window.addEventListener("load", () =>
+        setTimeout(
+          () => document.getElementById("preloader").classList.add("hide"),
+          2000,
+        ),
+      );
+
+      // CURSOR — only on true pointer devices
+      if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+        const cur = document.getElementById("cur"),
+          crng = document.getElementById("crng");
+        let cx = 0, cy = 0, rx = 0, ry = 0;
+        document.addEventListener("mousemove", (e) => { cx = e.clientX; cy = e.clientY; }, { passive: true });
+        (function loop() {
+          cur.style.left = cx + "px";
+          cur.style.top = cy + "px";
+          rx += (cx - rx) * 0.13;
+          ry += (cy - ry) * 0.13;
+          crng.style.left = rx + "px";
+          crng.style.top = ry + "px";
+          requestAnimationFrame(loop);
+        })();
+      }
+
+      // HEADER
+      const hdr = document.getElementById("hdr");
+
+      // HAMBURGER
+      const hbg = document.getElementById("hbg"),
+        mnav = document.getElementById("mnav");
+      hbg.addEventListener("click", () => {
+        hbg.classList.toggle("open");
+        mnav.classList.toggle("open");
+      });
+      mnav.querySelectorAll("a").forEach((a) =>
+        a.addEventListener("click", () => {
+          hbg.classList.remove("open");
+          mnav.classList.remove("open");
+        }),
+      );
+
+      // SCROLL OBSERVER
+      const io = new IntersectionObserver(
+        (e) =>
+          e.forEach((x) => {
+            if (x.isIntersecting) x.target.classList.add("in");
+          }),
+        { threshold: 0.14 },
+      );
+      document
+        .querySelectorAll(".rev,.rev-l,.rev-r")
+        .forEach((el) => io.observe(el));
+
+      // WAVE ANIMATION
+      const wIO = new IntersectionObserver(
+        (e) =>
+          e.forEach((x) => {
+            x.isIntersecting
+              ? x.target.classList.add("animate")
+              : x.target.classList.remove("animate");
+          }),
+        { threshold: 0.3 },
+      );
+      const ws = document.getElementById("waveSec");
+      if (ws) wIO.observe(ws);
+
+      // HERO LINE
+      setTimeout(() => {
+        const hl = document.getElementById("hLine");
+        if (hl) hl.classList.add("go");
+      }, 1300);
+
+      // POPUP
+      const pov = document.getElementById("popOv");
+      document
+        .getElementById("openPop")
+        .addEventListener("click", () => pov.classList.add("open"));
+      document
+        .getElementById("popX")
+        .addEventListener("click", () => pov.classList.remove("open"));
+      pov.addEventListener("click", (e) => {
+        if (e.target === pov) pov.classList.remove("open");
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") pov.classList.remove("open");
+      });
+
+      // SMOOTH ANCHOR
+      document.querySelectorAll('a[href^="#"]').forEach((a) =>
+        a.addEventListener("click", (e) => {
+          e.preventDefault();
+          const t = document.querySelector(a.getAttribute("href"));
+          if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
+        }),
+      );
+
+      // WHATSAPP FORM
+      function sendToWhatsApp() {
+        const name = document.getElementById("cfName")?.value || "";
+        const phone = document.getElementById("cfPhone")?.value || "";
+        const service = document.getElementById("cfService")?.value || "";
+        const msg = document.getElementById("cfMsg")?.value || "";
+        if (!phone) {
+          alert("Please enter your phone number");
+          return;
+        }
+        const text = `Hello Dr. Asmaa,%0aName: ${name}%0aPhone: ${phone}%0aService: ${service}%0aMessage: ${msg}`;
+        window.open(`https://wa.me/00966566257520?text=${text}`, "_blank");
+      }
+
+      // ACTIVE NAV
+      const sections = document.querySelectorAll("section[id]");
+      const navLinks = document.querySelectorAll('nav a[href^="#"]');
+      let scrollTick = false;
+      function handleScroll() {
+        hdr.classList.toggle("scrolled", scrollY > 50);
+        let current = "";
+        sections.forEach((s) => { if (scrollY >= s.offsetTop - 120) current = s.id; });
+        navLinks.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + current));
+        scrollTick = false;
+      }
+      window.addEventListener("scroll", () => {
+        if (!scrollTick) { scrollTick = true; requestAnimationFrame(handleScroll); }
+      }, { passive: true });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js" integrity="sha512-Ysw1DcK1P+uYLqprEAzNQJP+J4hTx4t/3X2nbVwszao8wD+9afLjBQYjz7Uk4ADP+Er++mJoScI42ueGtQOzEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      const testiSwiper = new Swiper('#testiSl', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.testi-dots',
+          clickable: true,
+          bulletClass: 'dot',
+          bulletActiveClass: 'on',
+        },
+        breakpoints: {
+          640: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
+        },
+      });
+    </script>
+
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <a class="wa-fab" href="https://wa.me/00966566257520" target="_blank" aria-label="WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+  </body>
+</html>

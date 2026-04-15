@@ -766,10 +766,10 @@
     <script>
       // PRELOADER
       window.addEventListener("load", () =>
-        setTimeout(
-          () => document.getElementById("preloader").classList.add("hide"),
-          2000,
-        ),
+        setTimeout(() => {
+          document.getElementById("preloader").classList.add("hide");
+          document.body.classList.add("loaded");
+        }, 2000),
       );
 
       // CURSOR — only on true pointer devices (skips mobile entirely)

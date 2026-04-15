@@ -498,7 +498,7 @@
     padding-right: 1rem;
       }
       body.loaded .hero-right h1 {
-        animation: slideUp 0.9s 1.2s forwards;
+        animation: slideUp 0.9s 2.2s forwards;
       }
       .hero-right h1 .dr-small {
         /* font-size: clamp(1.2rem, 2.5vw, 2.2rem);
@@ -516,7 +516,7 @@
         opacity: 0;
       }
       body.loaded .hero-right .hero-title {
-        animation: fadeIn 0.9s 1.5s forwards;
+        animation: fadeIn 0.9s 2.5s forwards;
       }
       .hero-img-wrap {
         height: 100%;
@@ -530,7 +530,7 @@
         z-index: 2;
       }
       body.loaded .hero-img-wrap {
-        animation: fadeIn 1s 0s forwards;
+        animation: fadeIn 1s 1s forwards;
       }
       .hero-img-wrap .hero-icon {
         border-radius: 8px;
@@ -555,7 +555,7 @@
         z-index: 5;
       }
       body.loaded .hero-left {
-        animation: slideUp 0.9s 1.4s forwards;
+        animation: slideUp 0.9s 2.4s forwards;
       }
       .hero-bracket {
         /* border:3px solid #987b43;
@@ -617,7 +617,7 @@
       }
 
       body.loaded .hero-svc-label {
-        animation: slideUp 0.9s 1.6s forwards;
+        animation: slideUp 0.9s 2.6s forwards;
       }
 
       /* hero diagonal line */

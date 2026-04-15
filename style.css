@@ -518,7 +518,7 @@
         flex-shrink: 0;
         overflow: hidden;
         filter: brightness(0.95) contrast(1.05);
-        background: url("../assets/hero-icon.png") 50% 0% / cover no-repeat transparent;
+        background: url("assets/hero-icon.png") 50% 0% / cover no-repeat transparent;
       }
 
       .hero-left {

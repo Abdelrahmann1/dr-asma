@@ -468,12 +468,18 @@
     justify-content: flex-start;
     height: 100%;
       }
+      .hero-right h1,
+      .hero-right .dr-small,
+      .hero-right .hero-title,
+      .hero-bracket p {
+        font-family: 'Alexandria', sans-serif;
+      }
       .hero-right h1 {
         /* font-size: clamp(2.2rem, 4.5vw, 4rem); */
         /* font-weight: 900; */
         /* line-height: 1.1; */
         opacity: 0;
-            font-family: Cairo;
+            font-family: 'Alexandria', sans-serif;
     font-size: 50px;
     font-weight: 400;
         transform: translateX(40px);

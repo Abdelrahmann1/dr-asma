@@ -483,41 +483,8 @@
       .hero-bracket p {
         font-family: 'Alexandria', sans-serif;
       }
-      .hero-right h1 {
-        /* font-size: clamp(2.2rem, 4.5vw, 4rem); */
-        /* font-weight: 900; */
-        /* line-height: 1.1; */
-        opacity: 0;
-            font-family: 'Alexandria', sans-serif;
-    font-size: 50px;
-    font-weight: 400;
-        transform: translateY(30px);
-            border-style: solid;
-    border-width: 0px 4px 0px 0px;
-    border-color: rgb(152, 123, 67);
-    padding-right: 1rem;
-      }
-      body.loaded .hero-right h1 {
-        animation: slideUp 0.9s 2.2s forwards;
-      }
-      .hero-right h1 .dr-small {
-        /* font-size: clamp(1.2rem, 2.5vw, 2.2rem);
-        font-weight: 300;
-        color: var(--muted); */
-        margin-bottom: 4px;
-        display: block;
-      }
-      .hero-right .hero-title {
-        font-size: clamp(0.85rem, 1.4vw, 1.1rem);
-        font-weight: 500;
-        color: var(--gold);
-        letter-spacing: 1px;
-        margin-top: 12px;
-        opacity: 0;
-      }
-      body.loaded .hero-right .hero-title {
-        animation: fadeIn 0.9s 2.5s forwards;
-      }
+      /* ── HERO ANIMATION (3-step sequence, fires after preloader) ── */
+      /* Step 1: image */
       .hero-img-wrap {
         height: 100%;
         position: relative;
@@ -530,7 +497,40 @@
         z-index: 2;
       }
       body.loaded .hero-img-wrap {
-        animation: fadeIn 1s 1s forwards;
+        animation: fadeIn 1s 0.3s forwards;
+      }
+
+      /* Step 2: doctor name */
+      .hero-right h1 {
+        opacity: 0;
+        font-family: 'Alexandria', sans-serif;
+        font-size: 50px;
+        font-weight: 400;
+        transform: translateY(24px);
+        border-style: solid;
+        border-width: 0px 4px 0px 0px;
+        border-color: rgb(152, 123, 67);
+        padding-right: 1rem;
+      }
+      body.loaded .hero-right h1 {
+        animation: slideUp 0.8s 1.5s forwards;
+      }
+      .hero-right h1 .dr-small {
+        margin-bottom: 4px;
+        display: block;
+      }
+
+      /* Step 3: subtitle */
+      .hero-right .hero-title {
+        font-size: clamp(0.85rem, 1.4vw, 1.1rem);
+        font-weight: 500;
+        color: var(--gold);
+        letter-spacing: 1px;
+        margin-top: 12px;
+        opacity: 0;
+      }
+      body.loaded .hero-right .hero-title {
+        animation: fadeIn 0.8s 2.5s forwards;
       }
       .hero-img-wrap .hero-icon {
         border-radius: 8px;
@@ -549,13 +549,13 @@
         justify-content: flex-end;
         height: 100%;
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(24px);
         align-items: flex-end;
         position: relative;
         z-index: 5;
       }
       body.loaded .hero-left {
-        animation: slideUp 0.9s 2.4s forwards;
+        animation: slideUp 0.8s 2.3s forwards;
       }
       .hero-bracket {
         /* border:3px solid #987b43;
@@ -617,7 +617,7 @@
       }
 
       body.loaded .hero-svc-label {
-        animation: slideUp 0.9s 2.6s forwards;
+        animation: slideUp 0.8s 2.5s forwards;
       }
 
       /* hero diagonal line */

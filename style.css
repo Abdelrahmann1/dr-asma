@@ -181,11 +181,10 @@
         border-right: 1px solid rgba(152,123,67,0.35);
       }
       .hdr-logo-name .hdr-n1 {
-        font-size: 0.58rem;
+        font-size: 0.62rem;
         font-weight: 400;
         color: var(--muted);
-        letter-spacing: 1px;
-        text-transform: uppercase;
+        letter-spacing: 0.5px;
       }
       .hdr-logo-name .hdr-n2 {
         font-size: 0.82rem;
@@ -719,7 +718,7 @@
       }
       .sec-head h2 {
         font-size: 50px;
-    font-weight: 600;
+    font-weight: 400;
     color: #FFFFFF;
       }
       .gold-bar4 {
@@ -933,6 +932,7 @@
         display: flex;
         align-items: center;
         gap: 8px;
+        direction: ltr;
       }
       .dr-badge .bar {
         width: 2px;
@@ -966,7 +966,7 @@
         align-items: center;
         gap: 12px;
         font-size: clamp(1.5rem, 2.5vw, 2rem);
-        font-weight: 900;
+        font-weight: 400;
       }
       .about-head .bar {
         width: 4px;
@@ -977,7 +977,7 @@
       .about-txt {
         font-size: 0.88rem;
         line-height: 1.95;
-        color: var(--muted);
+        color: #fff;
       }
 
       /* ARTICLES */
@@ -986,81 +986,102 @@
         padding: 70px 3%;
       }
       .articles-in {
-        max-width: 1300px;
+        max-width: 1100px;
         margin: 0 auto;
       }
       .articles-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 3px;
-        margin-top: 36px;
-      }
-      .art-c {
-        background: var(--dark2);
-        padding: 28px 22px;
-        position: relative;
-        overflow: hidden;
-        cursor: pointer;
-        min-height: 180px;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
-        border: 1px solid rgba(152, 123, 67, 0.06);
-        transition:
-          border-color 0.3s,
-          transform 0.3s;
+        margin-top: 44px;
+        border-top: 1px solid rgba(152, 123, 67, 0.15);
+      }
+      .art-c {
+        display: grid;
+        grid-template-columns: 72px 1fr auto;
+        align-items: center;
+        gap: 28px;
+        padding: 26px 8px;
+        border-bottom: 1px solid rgba(152, 123, 67, 0.12);
+        cursor: pointer;
+        position: relative;
+        transition: background 0.3s, padding-right 0.3s;
+        overflow: hidden;
+      }
+      .art-c::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: var(--gold);
+        transform: scaleY(0);
+        transform-origin: bottom;
+        transition: transform 0.35s ease;
+      }
+      .art-c:hover::after {
+        transform: scaleY(1);
       }
       .art-c:hover {
-        border-color: rgba(152, 123, 67, 0.28);
-        transform: translateY(-3px);
+        background: rgba(152, 123, 67, 0.04);
+        padding-right: 18px;
       }
       .art-num {
-        font-size: 2.8rem;
-        font-weight: 900;
-        color: rgba(152, 123, 67, 0.12);
+        font-size: 2.2rem;
+        font-weight: 300;
+        color: rgba(152, 123, 67, 0.18);
         line-height: 1;
-        margin-bottom: 12px;
+        text-align: center;
         transition: color 0.3s;
+        font-family: 'Alexandria', sans-serif;
       }
       .art-c:hover .art-num {
-        color: rgba(152, 123, 67, 0.35);
+        color: rgba(152, 123, 67, 0.5);
+      }
+      .art-body {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .art-tag {
+        font-size: 0.6rem;
+        font-weight: 400;
+        letter-spacing: 2px;
+        color: var(--gold);
+        opacity: 0.65;
+        transition: opacity 0.3s;
+      }
+      .art-c:hover .art-tag {
+        opacity: 1;
       }
       .art-title {
-        font-size: 0.9rem;
-        font-weight: 700;
+        font-size: 1.02rem;
+        font-weight: 400;
         line-height: 1.65;
         color: var(--text);
         transition: color 0.3s;
       }
       .art-c:hover .art-title {
-        color: var(--gold);
+        color: #fff;
       }
       .art-arr {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        margin-top: 18px;
-      }
-      .art-arr span {
-        width: 28px;
-        height: 28px;
+        width: 38px;
+        height: 38px;
         border: 1px solid rgba(152, 123, 67, 0.22);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         color: var(--gold);
-        font-size: 10px;
-        transition:
-          transform 0.3s,
-          background 0.3s,
-          border-color 0.3s;
+        font-size: 13px;
+        flex-shrink: 0;
+        transition: background 0.3s, border-color 0.3s, transform 0.3s;
       }
-      .art-c:hover .art-arr span {
-        transform: rotate(-45deg);
+      .art-c:hover .art-arr {
         background: var(--gold);
         color: #000;
         border-color: var(--gold);
+        transform: rotate(-45deg);
       }
 
       /* TESTIMONIALS */

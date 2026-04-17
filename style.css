@@ -510,6 +510,7 @@
         border-width: 0px 4px 0px 0px;
         border-color: rgb(152, 123, 67);
         padding-right: 1rem;
+        margin-bottom: 10px; ;
       }
       body.loaded .hero-right h1 {
         animation: slideUp 0.8s 1.5s forwards;
@@ -527,19 +528,22 @@
         letter-spacing: 1px;
         margin-top: 12px;
         opacity: 0;
+        
+        
+        
       }
       body.loaded .hero-right .hero-title {
         animation: fadeIn 0.8s 2.5s forwards;
       }
       .hero-img-wrap .hero-icon {
-        border-radius: 8px;
+        border-radius: 4px;
 
         width: clamp(260px, 28vw, 441px);
         aspect-ratio: 441 / 543;
         flex-shrink: 0;
         overflow: hidden;
         filter: brightness(0.95) contrast(1.05);
-        background: url("assets/hero-icon.png") 50% 0% / cover no-repeat transparent;
+        background: url("assets/asma2.png") 50% 0% / cover no-repeat transparent;
       }
 
       .hero-left {
@@ -997,7 +1001,7 @@
       }
       .art-c {
         display: grid;
-        grid-template-columns: 72px 1fr auto;
+        grid-template-columns: 1fr auto;
         align-items: center;
         gap: 28px;
         padding: 26px 8px;
@@ -1089,6 +1093,9 @@
         background: var(--black);
         padding: 70px 3%;
       }
+      .testi-sec .sec-head h2 {
+        font-size: 64px;
+      }
       .testi-wrap {
         max-width: 1300px;
         margin: 0 auto;
@@ -1099,8 +1106,9 @@
 }
       .testi-c {
         background: var(--dark2);
-        border: 1px solid rgba(152, 123, 67, 0.1);
-        border-bottom: 2px solid rgba(152, 123, 67, 0.3);
+        border: 2px solid var(--gold);
+        outline: 1px solid rgba(152, 123, 67, 0.3);
+        outline-offset: 5px;
         padding: 34px 28px 26px;
         position: relative;
         display: flex;
@@ -1108,11 +1116,11 @@
         height: 100%;
         min-height: 200px;
         transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-        overflow: hidden;
+        overflow: visible;
       }
       .testi-c:hover {
-        border-color: rgba(152, 123, 67, 0.28);
-        border-bottom-color: var(--gold);
+        border-color: var(--gold);
+        outline-color: rgba(152, 123, 67, 0.3);
         transform: translateY(-4px);
         box-shadow: 0 16px 40px rgba(0,0,0,0.3);
       }
@@ -1802,7 +1810,7 @@
 .card-front {
   width: 100%;
   height: 100%;
-  background: #46464652;
+  background: #161111;
   border: 1px solid #987B43;
   padding: 10% 22px;
     /* filter: grayscale(40%); */
@@ -1847,8 +1855,9 @@
   opacity: 0.5;
 }
 .card-front h1{
+
     text-align: center;
-        font-size: 60px;
+        font-size: 90px;
     font-weight: 700;
     -webkit-text-stroke-width: 2px;
     stroke-width: 2px;
@@ -1857,11 +1866,10 @@
     color: #987B4300;
 }
 .card-front h3{
-        font-family: "Cairo", Sans-serif;
     font-weight: 600;
     color: #FFFFFF;
     padding-top: 1rem;
-font-size: 1.7rem;
+font-size: 1.8rem;
 width: 100%;
 text-align: center;
 

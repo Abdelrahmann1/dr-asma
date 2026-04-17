@@ -1099,47 +1099,64 @@
 }
       .testi-c {
         background: var(--dark2);
-        border: 1px solid rgba(152, 123, 67, 0.07);
-        padding: 26px 22px;
+        border: 1px solid rgba(152, 123, 67, 0.1);
+        border-bottom: 2px solid rgba(152, 123, 67, 0.3);
+        padding: 34px 28px 26px;
         position: relative;
         display: flex;
         flex-direction: column;
         height: 100%;
-        min-height: 140px;
-        transition:
-          border-color 0.3s,
-          transform 0.3s;
+        min-height: 200px;
+        transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        overflow: hidden;
       }
       .testi-c:hover {
-        border-color: rgba(152, 123, 67, 0.22);
-        transform: translateY(-3px);
+        border-color: rgba(152, 123, 67, 0.28);
+        border-bottom-color: var(--gold);
+        transform: translateY(-4px);
+        box-shadow: 0 16px 40px rgba(0,0,0,0.3);
       }
-      .testi-c::before {
-        content: '"';
+      .testi-quote {
         position: absolute;
-        top: 8px;
-        left: 18px;
-        font-size: 4.5rem;
+        top: 10px;
+        left: 20px;
+        font-size: 5rem;
         font-weight: 900;
-        color: rgba(152, 123, 67, 0.06);
+        color: rgba(152, 123, 67, 0.08);
         line-height: 1;
-        font-family: serif;
+        font-family: Georgia, serif;
+        transition: color 0.3s;
+        pointer-events: none;
+      }
+      .testi-c:hover .testi-quote {
+        color: rgba(152, 123, 67, 0.15);
       }
       .stars {
-        color: var(--gold);
-        font-size: 0.78rem;
-        letter-spacing: 2px;
-        margin-bottom: 10px;
+        color: var(--gold2);
+        font-size: 0.82rem;
+        letter-spacing: 3px;
+        margin-bottom: 14px;
       }
       .testi-txt {
-        font-size: 0.83rem;
-        line-height: 1.85;
-        color: var(--muted);
-        margin-bottom: 16px;
-      }
-      .testi-name {
-        font-weight: 700;
         font-size: 0.88rem;
+        line-height: 1.9;
+        color: #d4cfc8;
+        flex: 1;
+        margin-bottom: 20px;
+      }
+      .testi-foot {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-top: 14px;
+        border-top: 1px solid rgba(152, 123, 67, 0.12);
+      }
+      .testi-label {
+        font-size: 0.68rem;
+        font-weight: 400;
+        letter-spacing: 2px;
+        color: rgba(152, 123, 67, 0.6);
+        text-transform: uppercase;
       }
       .testi-dots {
         display: flex;
@@ -1153,9 +1170,7 @@
         border-radius: 50%;
         background: rgba(152, 123, 67, 0.22);
         cursor: pointer;
-        transition:
-          background 0.3s,
-          width 0.3s;
+        transition: background 0.3s, width 0.3s;
       }
       .dot.on {
         background: var(--gold);

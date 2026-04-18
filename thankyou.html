@@ -1,0 +1,459 @@
+<!doctype html>
+<html dir="rtl" lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>شكراً لك – دكتورة أسماء الحداد</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Alexandria:wght@300;400;500;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="favicon.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <style>
+      .thankyou-sec {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--black);
+        position: relative;
+        overflow: hidden;
+        padding: 120px 24px 60px;
+      }
+
+      .thankyou-sec::before {
+        content: '';
+        position: absolute;
+        top: -200px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 700px;
+        height: 700px;
+        background: radial-gradient(circle, rgba(152,123,67,0.08) 0%, transparent 70%);
+        pointer-events: none;
+      }
+
+      .ty-watermark {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: clamp(80px, 18vw, 220px);
+        font-weight: 900;
+        color: rgba(152,123,67,0.04);
+        white-space: nowrap;
+        pointer-events: none;
+        user-select: none;
+        letter-spacing: 0.05em;
+      }
+
+      .ty-box {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        max-width: 600px;
+        width: 100%;
+      }
+
+      .ty-icon-wrap {
+        margin: 0 auto 36px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 2px solid #987b43;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        animation: ty-ring 0.8s ease forwards;
+      }
+
+      .ty-icon-wrap::before {
+        content: '';
+        position: absolute;
+        inset: -8px;
+        border-radius: 50%;
+        border: 1px solid rgba(196,169,110,0.25);
+        animation: ty-ring 1.2s ease forwards;
+      }
+
+      @keyframes ty-ring {
+        from { opacity: 0; transform: scale(0.6); }
+        to   { opacity: 1; transform: scale(1); }
+      }
+
+      .ty-icon-wrap svg {
+        width: 44px;
+        height: 44px;
+        stroke: #c4a96e;
+        stroke-width: 2.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+        animation: ty-check 0.6s 0.5s ease both;
+      }
+
+      @keyframes ty-check {
+        from { opacity: 0; transform: scale(0.5); }
+        to   { opacity: 1; transform: scale(1); }
+      }
+
+      .ty-tag {
+        font-size: 0.75rem;
+        letter-spacing: 0.18em;
+        color: #987b43;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+        font-weight: 600;
+        animation: ty-fade 0.7s 0.3s ease both;
+      }
+
+      .ty-title {
+        font-size: clamp(2rem, 6vw, 3.2rem);
+        font-weight: 800;
+        color: var(--text);
+        line-height: 1.15;
+        margin-bottom: 20px;
+        animation: ty-fade 0.7s 0.4s ease both;
+      }
+
+      .ty-title span {
+        background: linear-gradient(90deg, #987b43, #c4a96e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .ty-desc {
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.8;
+        max-width: 460px;
+        margin: 0 auto 40px;
+        animation: ty-fade 0.7s 0.5s ease both;
+      }
+
+      @keyframes ty-fade {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      .ty-divider {
+        width: 60px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #987b43, transparent);
+        margin: 0 auto 40px;
+        animation: ty-fade 0.7s 0.55s ease both;
+      }
+
+      .ty-actions {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+        animation: ty-fade 0.7s 0.65s ease both;
+      }
+
+      .ty-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 13px 28px;
+        border-radius: 2px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        font-family: var(--font);
+      }
+
+      .ty-btn-primary {
+        background: linear-gradient(135deg, #987b43, #c4a96e);
+        color: #000;
+        border: none;
+      }
+
+      .ty-btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(152,123,67,0.35);
+      }
+
+      .ty-btn-outline {
+        background: transparent;
+        color: #c4a96e;
+        border: 1px solid rgba(152,123,67,0.5);
+      }
+
+      .ty-btn-outline:hover {
+        border-color: #c4a96e;
+        background: rgba(152,123,67,0.06);
+        transform: translateY(-2px);
+      }
+
+      /* Corner decorations */
+      .ty-corner {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        pointer-events: none;
+      }
+      .ty-corner.tl { top: -2px; right: -2px; border-top: 1px solid #987b43; border-right: 1px solid #987b43; }
+      .ty-corner.tr { top: -2px; left: -2px; border-top: 1px solid #987b43; border-left: 1px solid #987b43; }
+      .ty-corner.bl { bottom: -2px; right: -2px; border-bottom: 1px solid #987b43; border-right: 1px solid #987b43; }
+      .ty-corner.br { bottom: -2px; left: -2px; border-bottom: 1px solid #987b43; border-left: 1px solid #987b43; }
+
+      .ty-card-border {
+        position: relative;
+        padding: 48px 40px;
+        border: 1px solid rgba(152,123,67,0.18);
+        background: rgba(255,255,255,0.015);
+      }
+
+      @media (max-width: 480px) {
+        .ty-card-border { padding: 36px 20px; }
+        .ty-actions { flex-direction: column; align-items: center; }
+        .ty-btn { width: 100%; justify-content: center; }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- PRELOADER -->
+    <div id="preloader">
+      <div class="pre-logo">Dr. Asmaa Elhaddad</div>
+      <div class="pre-bar"><span></span></div>
+    </div>
+
+    <!-- CURSOR -->
+    <div class="cur" id="cur"></div>
+    <div class="cur-ring" id="crng"></div>
+
+    <!-- SIDE BUTTONS -->
+    <div class="side-btns">
+      <a class="side-expand side-gold" href="https://wa.me/00966566257520" target="_blank">
+        <div class="side-icon"><i class="fa-brands fa-whatsapp"></i></div>
+        <span class="side-label">واتساب</span>
+      </a>
+      <a class="side-expand side-gold" href="tel:00966566257520">
+        <div class="side-icon"><i class="fa-solid fa-phone"></i></div>
+        <span class="side-label">الهاتف</span>
+      </a>
+    </div>
+
+    <!-- HEADER -->
+    <header id="hdr">
+      <div class="hdr-logo">
+        <div class="hdr-logo-text">
+          <img src="assets/logo.png" alt="دكتورة أسماء الحداد">
+        </div>
+        <div class="hdr-logo-name">
+          <span class="hdr-n1">دكتورة</span>
+          <span class="hdr-n2">أسماء الحداد</span>
+        </div>
+      </div>
+      <nav>
+        <a href="index.html">الرئيسية</a>
+        <a href="index.html#services">خدماتنا</a>
+        <a href="index.html#about">عن الدكتورة</a>
+        <a href="index.html#articles">مقالات</a>
+        <a href="index.html#reviews">آراء العملاء</a>
+        <a href="index.html#contact">تواصل معنا</a>
+        <a href="gallery.html">معرض الصور</a>
+        <a class="lang-btn" href="index-en.html"><span class="lang-flag">🌐</span> EN</a>
+      </nav>
+      <div class="hamburger" id="hbg"><span></span><span></span></div>
+    </header>
+
+    <div class="mobile-nav" id="mnav">
+      <a href="index.html">الرئيسية</a>
+      <a href="index.html#services">خدماتنا</a>
+      <a href="index.html#about">عن الدكتورة</a>
+      <a href="index.html#articles">مقالات</a>
+      <a href="index.html#reviews">آراء العملاء</a>
+      <a href="index.html#contact">تواصل معنا</a>
+      <a href="gallery.html">معرض الصور</a>
+      <a class="lang-btn" href="index-en.html" style="margin-top:10px;align-self:center;"><span class="lang-flag">🌐</span> English</a>
+    </div>
+
+    <!-- THANK YOU SECTION -->
+    <section class="thankyou-sec">
+      <div class="ty-watermark">شكراً</div>
+
+      <div class="ty-box rev">
+        <div class="ty-card-border">
+          <div class="ty-corner tl"></div>
+          <div class="ty-corner tr"></div>
+          <div class="ty-corner bl"></div>
+          <div class="ty-corner br"></div>
+
+          <div class="ty-icon-wrap">
+            <svg viewBox="0 0 44 44">
+              <polyline points="8,22 18,32 36,14" />
+            </svg>
+          </div>
+
+          <div class="ty-tag">تم الإرسال بنجاح</div>
+
+          <h1 class="ty-title">
+            شكراً لك<br>
+            <span>على تواصلك معنا</span>
+          </h1>
+
+          <div class="ty-divider"></div>
+
+          <p class="ty-desc">
+            لقد تلقينا طلبك بنجاح، وسيتواصل معك فريق د. أسماء الحداد في أقرب وقت ممكن لتأكيد موعدك وتقديم المساعدة اللازمة.
+          </p>
+
+          <div class="ty-actions">
+            <a href="index.html" class="ty-btn ty-btn-primary">
+              <i class="fa-solid fa-house"></i>
+              العودة للرئيسية
+            </a>
+            <a href="https://wa.me/00966566257520" target="_blank" class="ty-btn ty-btn-outline">
+              <i class="fa-brands fa-whatsapp"></i>
+              تواصل عبر واتساب
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="f-grid rev">
+        <div>
+          <div class="f-logo-box">
+            <img src="assets/logo.png" alt="">
+          </div>
+          <p class="f-brand-txt">
+            د. أسماء الحداد نائب أول جراحة التجميل والليزر، تقدم حلولاً تجميلية
+            متقدمة تجمع بين الخبرة والدقة وأعلى معايير الجودة لتحقيق نتائج
+            طبيعية وآمنة.
+          </p>
+        </div>
+        <div class="f-col">
+          <h4>الصفحات</h4>
+          <ul>
+            <li><a href="index.html#home">الرئيسية</a></li>
+            <li><a href="index.html#services">خدماتنا</a></li>
+            <li><a href="index.html#about">عن الدكتورة</a></li>
+            <li><a href="index.html#articles">مقالات</a></li>
+            <li><a href="index.html#reviews">آراء العملاء</a></li>
+            <li><a href="index.html#contact">تواصل معنا</a></li>
+          </ul>
+        </div>
+        <div class="f-col">
+          <h4>خدماتنا</h4>
+          <ul>
+            <li><a href="index.html#services">تجميل وشد الوجه</a></li>
+            <li><a href="index.html#services">شد البطن والرقبة</a></li>
+            <li><a href="index.html#services">حقن الفيلر والبوتوكس</a></li>
+            <li><a href="index.html#services">نحت الجسم وشفط الدهون</a></li>
+            <li><a href="index.html#services">تجميل الثدي</a></li>
+            <li><a href="index.html#services">الليزر والخلايا الجذعية</a></li>
+          </ul>
+        </div>
+        <div class="f-col">
+          <h4>تواصل معنا</h4>
+          <ul>
+            <li>
+              <i class="fi fa-solid fa-phone"></i>
+              <a href="tel:00966566257520">00966566257520</a>
+            </li>
+            <li>
+              <i class="fi fa-brands fa-whatsapp"></i>
+              <a href="https://wa.me/00966566257520" target="_blank">واتساب</a>
+            </li>
+            <li>
+              <i class="fi fa-brands fa-facebook-f"></i>
+              <a href="https://www.facebook.com/DrAsmaaElhaddad" target="_blank">Facebook</a>
+            </li>
+            <li>
+              <i class="fi fa-brands fa-instagram"></i>
+              <a href="https://www.instagram.com/dr.asmaaelhaddad/" target="_blank">Instagram</a>
+            </li>
+            <li>
+              <i class="fi fa-brands fa-tiktok"></i>
+              <a href="https://www.tiktok.com/@dr.asmaa.mohammed" target="_blank">TikTok</a>
+            </li>
+            <li>
+              <i class="fi fa-brands fa-snapchat"></i>
+              <a href="https://www.snapchat.com/@asmaa_091272" target="_blank">Snapchat</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="f-bottom">
+        <span>All Rights Reserved Dr. Asmaa Elhaddad</span>
+        <span>© 2025 دكتورة أسماء الحداد – جراحة التجميل والليزر</span>
+      </div>
+    </footer>
+
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <a class="wa-fab" href="https://wa.me/00966566257520" target="_blank" aria-label="واتساب">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script>
+      // PRELOADER
+      window.addEventListener("load", () =>
+        setTimeout(() => {
+          document.getElementById("preloader").classList.add("hide");
+          document.body.classList.add("loaded");
+        }, 1200),
+      );
+
+      // CURSOR
+      if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+        const cur = document.getElementById("cur"),
+          crng = document.getElementById("crng");
+        let cx = 0, cy = 0, rx = 0, ry = 0;
+        document.addEventListener("mousemove", (e) => { cx = e.clientX; cy = e.clientY; }, { passive: true });
+        (function loop() {
+          cur.style.left = cx + "px";
+          cur.style.top = cy + "px";
+          rx += (cx - rx) * 0.13;
+          ry += (cy - ry) * 0.13;
+          crng.style.left = rx + "px";
+          crng.style.top = ry + "px";
+          requestAnimationFrame(loop);
+        })();
+      }
+
+      // HEADER SCROLL
+      const hdr = document.getElementById("hdr");
+      window.addEventListener("scroll", () => {
+        hdr.classList.toggle("scrolled", scrollY > 50);
+      }, { passive: true });
+
+      // HAMBURGER
+      const hbg = document.getElementById("hbg"),
+        mnav = document.getElementById("mnav");
+      hbg.addEventListener("click", () => {
+        hbg.classList.toggle("open");
+        mnav.classList.toggle("open");
+      });
+      mnav.querySelectorAll("a").forEach((a) =>
+        a.addEventListener("click", () => {
+          hbg.classList.remove("open");
+          mnav.classList.remove("open");
+        }),
+      );
+
+      // SCROLL OBSERVER
+      const io = new IntersectionObserver(
+        (e) => e.forEach((x) => { if (x.isIntersecting) x.target.classList.add("in"); }),
+        { threshold: 0.14 },
+      );
+      document.querySelectorAll(".rev,.rev-l,.rev-r").forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>

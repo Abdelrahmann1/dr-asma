@@ -74,10 +74,9 @@
       <div class="pop-box">
         <button class="pop-x" id="popX">✕</button>
         <h3>تواصل معنا</h3>
-        <div class="pop-form">
+        <form class="pop-form">
           <input type="text" placeholder="الاسم بالكامل *" />
           <input type="tel" placeholder="رقم الهاتف *" />
-          <input type="email" placeholder="البريد الإلكتروني" />
           <select>
             <option value="" disabled selected>الخدمة المطلوبة</option>
             <option>تجميل وشد الوجه</option>
@@ -89,8 +88,8 @@
             <option>أخرى</option>
           </select>
           <textarea placeholder="رسالتك..."></textarea>
-          <button onclick="sendToWhatsApp()">إرسال عبر واتساب</button>
-        </div>
+          <button type="submit">إرسل</button>
+        </form>
       </div>
     </div>
 
@@ -100,7 +99,7 @@
         <div class="side-icon"><i class="fa-regular fa-envelope"></i></div>
         <span class="side-contact-label">تواصل معنا</span>
       </div>
-      <a class="side-expand side-gold" href="https://wa.me/00966566257520" target="_blank">
+      <a class="side-expand side-gold" href="https://wa.me/00966566257520?text=Hello 👋 ، Welcome to Dr Asmaa ElHaddad clinic اهلا 👋 ، مرحبًا بك في عيادة دكتورة أسماء الحداد" target="_blank">
         <div class="side-icon"><i class="fa-brands fa-whatsapp"></i></div>
         <span class="side-label">واتساب</span>
       </a>
@@ -157,17 +156,11 @@
         <div class="hero-right">
           <h1>
             <span class="dr-small">دكتورة</span>
-            أسماءالحداد
+            أسماء الحداد
           </h1>
-          <!-- <div class="hero-title">نائب أول جراحة التجميل والليزر</div> -->
         </div>
         <div class="hero-img-wrap">
-          <div class="hero-icon">
-            <!-- <img
-              src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&q=80"
-              alt=""
-            /> -->
-          </div>
+          <div class="hero-icon"></div>
         </div>
         <div class="hero-left">
           <div class="hero-bracket">
@@ -179,7 +172,6 @@
           </div>
         </div>
       </div>
-      <!-- <div class="hero-svc-label">خدماتنا</div> -->
     </section>
 
  
@@ -687,7 +679,7 @@
           <h2 class="cf-title">
             <span class="bar"></span>
             حجز موعد          </h2>
-          <div class="cf">
+          <form class="cf">
             <div class="cf-row">
               <div
                 class="cf-f"
@@ -722,11 +714,11 @@
               <textarea id="cfMsg" placeholder="رسالتك"></textarea>
             </div>
             <div class="cf-submit">
-              <button class="cf-btn" onclick="sendToWhatsApp()">
+              <button type="submit" class="cf-btn" >
                 إرسال
               </button>
             </div>
-          </div>
+          </form>
         </div>
 
         <!-- Info -->
@@ -750,7 +742,7 @@
             <div class="contact-info-item">
               <i class="fi fa-brands fa-whatsapp"></i>
               <a
-                href="https://wa.me/00966566257520"
+                href="https://wa.me/00966566257520?text=Hello 👋 ، Welcome to Dr Asmaa ElHaddad clinic اهلا 👋 ، مرحبًا بك في عيادة دكتورة أسماء الحداد"
                 target="_blank"
                 style="color: var(--muted)"
                 >00966566257520</a
@@ -819,7 +811,7 @@
             </li>
             <li>
               <i class="fi fa-brands fa-whatsapp"></i>
-              <a href="https://wa.me/00966566257520" target="_blank">واتساب</a>
+              <a href="https://wa.me/00966566257520?text=Hello 👋 ، Welcome to Dr Asmaa ElHaddad clinic اهلا 👋 ، مرحبًا بك في عيادة دكتورة أسماء الحداد" target="_blank">واتساب</a>
             </li>
             <li>
               <i class="fi fa-brands fa-facebook-f"></i>
@@ -845,6 +837,7 @@
         <span>© 2025 دكتورة أسماء الحداد – جراحة التجميل والليزر</span>
       </div>
     </footer>
+    <script src="main.js"></script>
     <script>
       // PRELOADER
       window.addEventListener("load", () =>
@@ -972,7 +965,7 @@
         if (!scrollTick) { scrollTick = true; requestAnimationFrame(handleScroll); }
       }, { passive: true });
     </script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js" integrity="sha512-Ysw1DcK1P+uYLqprEAzNQJP+J4hTx4t/3X2nbVwszao8wD+9afLjBQYjz7Uk4ADP+Er++mJoScI42ueGtQOzEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script  src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js" integrity="sha512-Ysw1DcK1P+uYLqprEAzNQJP+J4hTx4t/3X2nbVwszao8wD+9afLjBQYjz7Uk4ADP+Er++mJoScI42ueGtQOzEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
   const testiSwiper = new Swiper('#testiSl', {
   slidesPerView: 1,
@@ -996,7 +989,7 @@
 </script>
 
     <!-- WHATSAPP FLOATING BUTTON -->
-    <a class="wa-fab" href="https://wa.me/00966566257520" target="_blank" aria-label="واتساب">
+    <a class="wa-fab" href="https://wa.me/00966566257520?text=Hello 👋 ، Welcome to Dr Asmaa ElHaddad clinic اهلا 👋 ، مرحبًا بك في عيادة دكتورة أسماء الحداد" target="_blank" aria-label="واتساب">
       <i class="fa-brands fa-whatsapp"></i>
     </a>
 

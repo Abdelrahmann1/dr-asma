@@ -43,7 +43,7 @@
       /* 5 — Hero: force LTR so columns read: title | image | description */
       .hero-content { direction: ltr !important; }
       .hero-right h1 {
-        border-width: 0 0 0 4px !important;   /* border-left instead of border-right */
+        border-width: 0 0 0 4px !important;   
         padding-right: 0 !important;
         padding-left: 1rem !important;
         text-align: left;
@@ -97,6 +97,43 @@
       .side-btns    { left: 0; right: auto; align-items: flex-start; }
       .side-expand  { border-left: none !important; border-right: 1px solid rgba(152,123,67,0.25); flex-direction: row-reverse; }
       .side-expand:hover { width: 155px; }
+       .hero-left {
+        animation: slideUp 0.8s 2.3s forwards !important;
+      }
+       .hero-right h1{
+        opacity: 1;
+      }
+      .hero-right {
+   opacity: 0;
+        animation: slideUp 0.8s 1.5s forwards !important;
+      }
+        .hero-img-wrap {
+        animation: fadeIn 1s 0.3s forwards;
+      }
+
+      @keyframes fadeIn {
+         from {
+          opacity: 0;
+          transform: translateX(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(00px);
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+
+        to {
+          opacity: 1 ;
+          transform: translateY(0);
+        }
+      }
+
     </style>
   </head>
   <body>
@@ -115,10 +152,9 @@
       <div class="pop-box">
         <button class="pop-x" id="popX">✕</button>
         <h3>Contact Us</h3>
-        <div class="pop-form">
+        <form class="pop-form">
           <input type="text" placeholder="Full Name *" />
           <input type="tel" placeholder="Phone Number *" />
-          <input type="email" placeholder="Email Address" />
           <select>
             <option value="" disabled selected>Service Required</option>
             <option>Facial Lift & Rejuvenation</option>
@@ -130,8 +166,8 @@
             <option>Other</option>
           </select>
           <textarea placeholder="Your message..."></textarea>
-          <button onclick="sendToWhatsApp()">Send via WhatsApp</button>
-        </div>
+          <button type="submit" >Send</button>
+        </form>
       </div>
     </div>
 
@@ -141,7 +177,7 @@
         <div class="side-icon"><i class="fa-regular fa-envelope"></i></div>
         <span class="side-contact-label">Contact</span>
       </div>
-      <a class="side-expand side-gold" href="https://wa.me/00966566257520" target="_blank">
+      <a class="side-expand side-gold" href="https://wa.me/00966566257520?text=Hello 👋 ، Welcome to Dr Asmaa ElHaddad clinic اهلا 👋 ، مرحبًا بك في عيادة دكتورة أسماء الحداد" target="_blank">
         <div class="side-icon"><i class="fa-brands fa-whatsapp"></i></div>
         <span class="side-label">WhatsApp</span>
       </a>
@@ -779,7 +815,7 @@
             <span class="bar"></span>
             Send Your Request
           </h2>
-          <div class="cf">
+          <form class="cf">
             <div class="cf-row">
               <div
                 class="cf-f"
@@ -814,11 +850,11 @@
               <textarea id="cfMsg" placeholder="Your message"></textarea>
             </div>
             <div class="cf-submit">
-              <button class="cf-btn" onclick="sendToWhatsApp()">
+              <button class="cf-btn" type="submit" >
                 Send
               </button>
             </div>
-          </div>
+          </form>
         </div>
 
         <!-- Info -->
@@ -840,7 +876,7 @@
             <div class="contact-info-item">
               <i class="fi fa-brands fa-whatsapp"></i>
               <a
-                href="https://wa.me/00966566257520"
+                href="https://wa.me/00966566257520?text=Hello 👋 ، Welcome to Dr Asmaa ElHaddad clinic اهلا 👋 ، مرحبًا بك في عيادة دكتورة أسماء الحداد"
                 target="_blank"
                 style="color: var(--muted)"
                 >00966566257520</a
@@ -909,7 +945,7 @@
             </li>
             <li>
               <i class="fi fa-brands fa-whatsapp"></i>
-              <a href="https://wa.me/00966566257520" target="_blank">WhatsApp</a>
+              <a href="https://wa.me/00966566257520?text=Hello 👋 ، Welcome to Dr Asmaa ElHaddad clinic اهلا 👋 ، مرحبًا بك في عيادة دكتورة أسماء الحداد" target="_blank">WhatsApp</a>
             </li>
             <li>
               <i class="fi fa-brands fa-facebook-f"></i>
@@ -935,7 +971,7 @@
         <span>All Rights Reserved Dr. Asmaa Elhaddad</span>
       </div>
     </footer>
-
+    <script src="main-en.js"></script>
     <script>
       // PRELOADER
       window.addEventListener("load", () =>
@@ -1034,20 +1070,7 @@
         }),
       );
 
-      // WHATSAPP FORM
-      function sendToWhatsApp() {
-        const name = document.getElementById("cfName")?.value || "";
-        const phone = document.getElementById("cfPhone")?.value || "";
-        const service = document.getElementById("cfService")?.value || "";
-        const msg = document.getElementById("cfMsg")?.value || "";
-        if (!phone) {
-          alert("Please enter your phone number");
-          return;
-        }
-        const text = `Hello Dr. Asmaa,%0aName: ${name}%0aPhone: ${phone}%0aService: ${service}%0aMessage: ${msg}`;
-        window.open(`https://wa.me/00966566257520?text=${text}`, "_blank");
-      }
-
+   
       // ACTIVE NAV
       const sections = document.querySelectorAll("section[id]");
       const navLinks = document.querySelectorAll('nav a[href^="#"]');
@@ -1063,7 +1086,7 @@
         if (!scrollTick) { scrollTick = true; requestAnimationFrame(handleScroll); }
       }, { passive: true });
     </script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js" integrity="sha512-Ysw1DcK1P+uYLqprEAzNQJP+J4hTx4t/3X2nbVwszao8wD+9afLjBQYjz7Uk4ADP+Er++mJoScI42ueGtQOzEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script  src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js" integrity="sha512-Ysw1DcK1P+uYLqprEAzNQJP+J4hTx4t/3X2nbVwszao8wD+9afLjBQYjz7Uk4ADP+Er++mJoScI42ueGtQOzEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
       const testiSwiper = new Swiper('#testiSl', {
         slidesPerView: 1,
@@ -1087,7 +1110,7 @@
     </script>
 
     <!-- WHATSAPP FLOATING BUTTON -->
-    <a class="wa-fab" href="https://wa.me/00966566257520" target="_blank" aria-label="WhatsApp">
+    <a class="wa-fab" href="https://wa.me/00966566257520?text=Hello 👋 ، Welcome to Dr Asmaa ElHaddad clinic اهلا 👋 ، مرحبًا بك في عيادة دكتورة أسماء الحداد" target="_blank" aria-label="WhatsApp">
       <i class="fa-brands fa-whatsapp"></i>
     </a>
 

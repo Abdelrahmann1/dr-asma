@@ -4,77 +4,85 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>معرض الصور – د. أسماء الحداد</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Alexandria:wght@300;400;500;700;800;900&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Alexandria:wght@300;400;500;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" href="favicon.png" type="image/x-icon" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <style>
       :root {
-        --gold: #987B43;
+        --gold:  #987B43;
         --gold2: #c4a96e;
         --gold3: #6b5530;
-        --black: #000000;
-        --dark: #111;
-        --dark2: #181818;
-        --dark3: #1e1e1e;
-        --text: #e8e4dd;
-        --muted: #888;
+        --goldL: #e8d5a3;
+        --black: #000;
+        --dark:  #0d0d0d;
+        --dark2: #141414;
+        --dark3: #1a1a1a;
+        --text:  #e8e4dd;
+        --muted: #777;
       }
 
-      *, *::before, *::after {
-        margin: 0; padding: 0; box-sizing: border-box;
-      }
-
-      html { scroll-behavior: smooth; overflow-x: hidden; }
-
+      *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+      html { scroll-behavior:smooth; overflow-x:hidden; }
       body {
-        font-family: 'Tajawal', sans-serif;
-        background: var(--black);
-        color: var(--text);
-        overflow-x: hidden;
-        direction: rtl;
+        font-family:'Tajawal', sans-serif;
+        background:var(--black);
+        color:var(--text);
+        overflow-x:hidden;
+        direction:rtl;
       }
+      a { text-decoration:none; color:inherit; }
+      img { max-width:100%; display:block; }
+      ::-webkit-scrollbar { width:3px; }
+      ::-webkit-scrollbar-track { background:var(--dark); }
+      ::-webkit-scrollbar-thumb { background:var(--gold); border-radius:2px; }
 
-      a { text-decoration: none; color: inherit; }
-      img { max-width: 100%; display: block; }
-
-      ::-webkit-scrollbar { width: 4px; }
-      ::-webkit-scrollbar-track { background: var(--dark); }
-      ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
-
-      /* ── NAV ── */
+      /* ───── NAV ───── */
       nav {
         position: fixed;
-        top: 0; left: 0; right: 0;
+        top:0; left:0; right:0;
         z-index: 1000;
-        padding: 18px 40px;
+        padding: 0 48px;
+        height: 80px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background: linear-gradient(180deg, rgba(0,0,0,.95) 0%, rgba(0,0,0,.7) 100%);
-        backdrop-filter: blur(12px);
-        border-bottom: 1px solid rgba(152,123,67,.25);
+        background: rgba(0,0,0,.88);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(152,123,67,.2);
       }
 
-      .nav-logo img { height: 52px; object-fit: contain; }
+      .nav-logo { display:flex; align-items:center; gap:12px; }
+      .nav-logo img { height:46px; object-fit:contain; }
+      .nav-logo-text { display:flex; flex-direction:column; line-height:1.2; }
+      .nav-logo-text span:first-child { font-size:.7rem; color:var(--gold2); letter-spacing:1px; }
+      .nav-logo-text span:last-child  { font-size:.95rem; font-weight:700; }
 
       .nav-back {
         display: flex;
         align-items: center;
         gap: 8px;
         color: var(--gold2);
-        font-size: .9rem;
+        font-size: .77rem;
         font-weight: 500;
-        transition: color .3s;
+        border: 1px solid rgba(152,123,67,.35);
+        padding: 8px 20px;
+        border-radius: 30px;
+        transition: all .3s;
       }
-      .nav-back:hover { color: #fff; }
-      .nav-back svg { width: 18px; height: 18px; }
+      .nav-back:hover {
+        background: rgba(152,123,67,.12);
+        border-color: var(--gold2);
+        color: #fff;
+      }
 
-      /* ── HERO ── */
+      /* ───── HERO ───── */
       .hero {
-        height: 340px;
+        padding-top: 80px;
+        height: 260px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -82,433 +90,515 @@
         text-align: center;
         position: relative;
         overflow: hidden;
-        margin-top: 88px;
       }
 
-      .hero::before {
-        content: '';
-        position: absolute;
-        inset: 0;
+      .hero-bg {
+        position:absolute; inset:0;
         background:
-          radial-gradient(ellipse 60% 70% at 50% 50%, rgba(152,123,67,.18) 0%, transparent 70%),
-          linear-gradient(180deg, #0a0a0a 0%, #000 100%);
+          radial-gradient(ellipse 80% 120% at 50% 100%, rgba(152,123,67,.13) 0%, transparent 65%),
+          linear-gradient(180deg, #060606 0%, #000 100%);
       }
 
-      .hero-line {
-        width: 60px; height: 1px;
-        background: linear-gradient(90deg, transparent, var(--gold), transparent);
-        margin: 0 auto 20px;
+      .hero-ornament {
+        position:absolute;
+        width:500px; height:500px;
+        border-radius:50%;
+        border:1px solid rgba(152,123,67,.06);
+        top:50%; left:50%;
+        transform:translate(-50%,-50%);
+        pointer-events:none;
+      }
+      .hero-ornament::before {
+        content:'';
+        position:absolute; inset:30px;
+        border-radius:50%;
+        border:1px solid rgba(152,123,67,.05);
+      }
+
+      .hero-content { position:relative; z-index:1; }
+
+      .hero-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(152,123,67,.1);
+        border: 1px solid rgba(152,123,67,.3);
+        border-radius: 30px;
+        padding: 5px 18px;
+        font-size: .75rem;
+        color: var(--gold2);
+        letter-spacing: 2px;
+        margin-bottom: 18px;
+      }
+      .hero-tag::before, .hero-tag::after {
+        content:'';
+        width:20px; height:1px;
+        background:var(--gold3);
       }
 
       .hero h1 {
         font-family: 'Alexandria', sans-serif;
-        font-size: clamp(2rem, 5vw, 3.5rem);
-        letter-spacing: 1px;
-        background: linear-gradient(135deg, var(--gold2), #fff 50%, var(--gold2));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        position: relative;
+        font-size: clamp(2.2rem, 5vw, 3.8rem);
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--gold3) 0%, var(--goldL) 40%, var(--gold2) 70%, var(--gold3) 100%);
+        -webkit-background-clip:text;
+        -webkit-text-fill-color:transparent;
+        background-clip:text;
+        letter-spacing:1px;
       }
 
-      .hero p {
-        margin-top: 14px;
-        color: var(--muted);
-        font-size: 1rem;
-        letter-spacing: 2px;
-        position: relative;
+      .hero-divider {
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        gap:10px;
+        margin-top:14px;
       }
+      .hero-divider span { color:var(--muted); font-size:.82rem; letter-spacing:3px; }
+      .hero-divider::before, .hero-divider::after {
+        content:'';
+        width:50px; height:1px;
+        background:linear-gradient(90deg,transparent,var(--gold3));
+      }
+      .hero-divider::after { transform:scaleX(-1); }
 
-      /* ── GALLERY SECTION ── */
+      /* ───── STATS BAR ───── */
+      .stats {
+        display:flex;
+        justify-content:center;
+        gap:0;
+        border-top: 1px solid rgba(152,123,67,.15);
+        border-bottom: 1px solid rgba(152,123,67,.15);
+        background: rgba(10,10,10,.9);
+        padding: 18px 0;
+      }
+      .stat {
+        flex:1; max-width:180px;
+        text-align:center;
+        position:relative;
+      }
+      .stat + .stat::before {
+        content:'';
+        position:absolute; right:0; top:50%;
+        transform:translateY(-50%);
+        height:30px; width:1px;
+        background:rgba(152,123,67,.2);
+      }
+      .stat-num {
+        font-family:'Alexandria',sans-serif;
+        font-size:1.6rem; font-weight:800;
+        color:var(--gold2);
+        display:block;
+      }
+      .stat-label { font-size:.72rem; color:var(--muted); letter-spacing:1px; }
+
+      /* ───── GALLERY ───── */
       .gallery-section {
-        padding: 60px 40px 100px;
-        max-width: 1400px;
+        padding: 56px 40px 100px;
+        max-width: 1440px;
         margin: 0 auto;
       }
 
-      /* Masonry grid */
+      .section-head {
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        margin-bottom:36px;
+      }
+      .section-title {
+        font-size:1.05rem;
+        color:var(--gold2);
+        font-weight:500;
+        display:flex;
+        align-items:center;
+        gap:10px;
+      }
+      .section-title::after {
+        content:'';
+        display:block;
+        width:40px; height:1px;
+        background:var(--gold3);
+      }
+      .section-count {
+        font-size:.8rem;
+        color:var(--muted);
+        border:1px solid rgba(152,123,67,.2);
+        border-radius:20px;
+        padding:4px 14px;
+      }
+      .section-count span { color:var(--gold2); font-weight:700; }
+
+      /* Masonry */
       .masonry {
         columns: 4;
-        column-gap: 16px;
+        column-gap: 12px;
+      }
+      @media(max-width:1100px){ .masonry{ columns:3; } }
+      @media(max-width:700px) { .masonry{ columns:2; } }
+      @media(max-width:420px) { .masonry{ columns:1; } }
+
+      .card {
+        break-inside:avoid;
+        margin-bottom:12px;
+        position:relative;
+        overflow:hidden;
+        border-radius:12px;
+        cursor:pointer;
+        background:var(--dark2);
+        border:1px solid rgba(152,123,67,.08);
+        transition: border-color .4s, box-shadow .4s, transform .4s;
+      }
+      .card:hover {
+        border-color:rgba(152,123,67,.4);
+        box-shadow:0 8px 40px rgba(152,123,67,.15);
+        transform:translateY(-3px);
       }
 
-      @media (max-width: 1100px) { .masonry { columns: 3; } }
-      @media (max-width: 720px)  { .masonry { columns: 2; } }
-      @media (max-width: 460px)  { .masonry { columns: 1; } }
-
-      .masonry-item {
-        break-inside: avoid;
-        margin-bottom: 16px;
-        position: relative;
-        overflow: hidden;
-        border-radius: 10px;
-        cursor: pointer;
-        border: 1px solid rgba(152,123,67,.15);
-        background: var(--dark2);
+      .card img {
+        width:100%; height:auto;
+        display:block;
+        transition:transform .6s cubic-bezier(.25,.46,.45,.94);
       }
+      .card:hover img { transform:scale(1.07); }
 
-      .masonry-item img {
-        width: 100%;
-        height: auto;
-        display: block;
-        transition: transform .55s cubic-bezier(.25,.46,.45,.94);
-      }
-
-      .masonry-item::after {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
+      .card-overlay {
+        position:absolute; inset:0;
+        background:linear-gradient(
           180deg,
-          transparent 50%,
-          rgba(0,0,0,.7) 100%
+          transparent 45%,
+          rgba(0,0,0,.85) 100%
         );
-        opacity: 0;
-        transition: opacity .4s;
+        opacity:0;
+        transition:opacity .4s;
+        display:flex;
+        align-items:flex-end;
+        justify-content:center;
+        padding-bottom:20px;
       }
+      .card:hover .card-overlay { opacity:1; }
 
-      .masonry-item:hover img { transform: scale(1.06); }
-      .masonry-item:hover::after { opacity: 1; }
+      .card-overlay-icon {
+        width:44px; height:44px;
+        border-radius:50%;
+        background:rgba(152,123,67,.85);
+        display:flex; align-items:center; justify-content:center;
+        transform:translateY(14px);
+        transition:transform .35s;
+        backdrop-filter:blur(4px);
+      }
+      .card:hover .card-overlay-icon { transform:translateY(0); }
+      .card-overlay-icon i { color:#fff; font-size:.95rem; }
 
-      .masonry-item .zoom-icon {
-        position: absolute;
-        bottom: 14px;
-        left: 50%;
-        transform: translateX(-50%) translateY(20px);
-        opacity: 0;
-        z-index: 2;
-        background: rgba(152,123,67,.9);
-        border-radius: 50%;
-        width: 42px; height: 42px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: opacity .35s, transform .35s;
+      /* Fade-in animation */
+      .card {
+        opacity:0;
+        transform:translateY(30px);
+        animation:fadeUp .5s ease forwards;
       }
-      .masonry-item:hover .zoom-icon {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
+      @keyframes fadeUp {
+        to { opacity:1; transform:translateY(0); }
       }
-      .masonry-item .zoom-icon svg {
-        width: 20px; height: 20px;
-        stroke: #fff;
-      }
+      .card:nth-child(1)  { animation-delay:.05s }
+      .card:nth-child(2)  { animation-delay:.1s  }
+      .card:nth-child(3)  { animation-delay:.15s }
+      .card:nth-child(4)  { animation-delay:.2s  }
+      .card:nth-child(5)  { animation-delay:.25s }
+      .card:nth-child(6)  { animation-delay:.3s  }
+      .card:nth-child(7)  { animation-delay:.35s }
+      .card:nth-child(8)  { animation-delay:.4s  }
+      .card:nth-child(9)  { animation-delay:.45s }
+      .card:nth-child(10) { animation-delay:.5s  }
+      .card:nth-child(11) { animation-delay:.55s }
+      .card:nth-child(12) { animation-delay:.6s  }
+      .card:nth-child(13) { animation-delay:.65s }
+      .card:nth-child(14) { animation-delay:.7s  }
+      .card:nth-child(15) { animation-delay:.75s }
+      .card:nth-child(16) { animation-delay:.8s  }
+      .card:nth-child(17) { animation-delay:.85s }
+      .card:nth-child(18) { animation-delay:.9s  }
+      .card:nth-child(19) { animation-delay:.95s }
+      .card:nth-child(20) { animation-delay:1s   }
+      .card:nth-child(21) { animation-delay:1.05s}
 
-      /* ── LIGHTBOX ── */
+      /* ───── LIGHTBOX ───── */
       .lightbox {
-        position: fixed;
-        inset: 0;
-        z-index: 9999;
-        background: rgba(0,0,0,.96);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity .35s;
-        backdrop-filter: blur(6px);
+        position:fixed; inset:0; z-index:9999;
+        background:rgba(0,0,0,.97);
+        display:flex; align-items:center; justify-content:center;
+        opacity:0; pointer-events:none;
+        transition:opacity .3s;
+        backdrop-filter:blur(8px);
+        -webkit-backdrop-filter:blur(8px);
       }
-      .lightbox.active {
-        opacity: 1;
-        pointer-events: all;
-      }
+      .lightbox.active { opacity:1; pointer-events:all; }
 
-      .lightbox-inner {
-        position: relative;
-        max-width: 90vw;
-        max-height: 90vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      .lb-wrap {
+        position:relative;
+        display:flex; align-items:center; justify-content:center;
+        max-width:92vw; max-height:90vh;
       }
+      .lb-wrap img {
+        max-width:88vw; max-height:88vh;
+        border-radius:10px;
+        object-fit:contain;
+        box-shadow:0 0 100px rgba(152,123,67,.2);
+        border:1px solid rgba(152,123,67,.2);
+        transform:scale(.94);
+        transition:transform .4s cubic-bezier(.25,.46,.45,.94);
+      }
+      .lightbox.active .lb-wrap img { transform:scale(1); }
 
-      .lightbox-inner img {
-        max-width: 90vw;
-        max-height: 88vh;
-        border-radius: 8px;
-        box-shadow: 0 0 80px rgba(152,123,67,.35);
-        border: 1px solid rgba(152,123,67,.3);
-        object-fit: contain;
-        transform: scale(.92);
-        transition: transform .4s cubic-bezier(.25,.46,.45,.94);
+      .lb-wrap::before {
+        content:'';
+        position:absolute; inset:-8px;
+        border:1px solid rgba(152,123,67,.1);
+        border-radius:14px;
+        pointer-events:none;
       }
-      .lightbox.active .lightbox-inner img { transform: scale(1); }
 
       .lb-btn {
-        position: fixed;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(152,123,67,.2);
-        border: 1px solid rgba(152,123,67,.4);
-        color: #fff;
-        width: 50px; height: 50px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: background .3s;
-        z-index: 10000;
+        position:fixed; top:50%; z-index:10000;
+        transform:translateY(-50%);
+        width:48px; height:48px; border-radius:50%;
+        background:rgba(20,20,20,.8);
+        border:1px solid rgba(152,123,67,.35);
+        display:flex; align-items:center; justify-content:center;
+        cursor:pointer;
+        transition:all .3s;
+        color:#fff; font-size:1rem;
+        backdrop-filter:blur(4px);
       }
-      .lb-btn:hover { background: rgba(152,123,67,.6); }
-      .lb-btn svg { width: 22px; height: 22px; stroke: #fff; }
-      .lb-prev { right: 24px; }
-      .lb-next { left: 24px; }
+      .lb-btn:hover {
+        background:rgba(152,123,67,.3);
+        border-color:var(--gold2);
+        transform:translateY(-50%) scale(1.08);
+      }
+      #lb-prev { right:20px; }
+      #lb-next { left:20px;  }
 
       .lb-close {
-        position: fixed;
-        top: 20px;
-        left: 24px;
-        background: rgba(152,123,67,.2);
-        border: 1px solid rgba(152,123,67,.4);
-        color: #fff;
-        width: 44px; height: 44px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: background .3s;
-        z-index: 10000;
+        position:fixed; top:20px; left:20px; z-index:10000;
+        width:42px; height:42px; border-radius:50%;
+        background:rgba(20,20,20,.8);
+        border:1px solid rgba(152,123,67,.3);
+        display:flex; align-items:center; justify-content:center;
+        cursor:pointer;
+        transition:all .3s;
+        color:#fff; font-size:.9rem;
+        backdrop-filter:blur(4px);
       }
-      .lb-close:hover { background: rgba(200,50,50,.5); }
-      .lb-close svg { width: 20px; height: 20px; stroke: #fff; }
+      .lb-close:hover { background:rgba(180,40,40,.4); border-color:#c0392b; }
 
+      .lb-footer {
+        position:fixed; bottom:24px; left:50%;
+        transform:translateX(-50%);
+        display:flex; align-items:center; gap:16px;
+        z-index:10000;
+      }
       .lb-counter {
-        position: fixed;
-        bottom: 24px;
-        left: 50%;
-        transform: translateX(-50%);
-        color: var(--gold2);
-        font-size: .85rem;
-        letter-spacing: 2px;
-        z-index: 10000;
+        color:var(--gold2);
+        font-size:.8rem; letter-spacing:3px;
+        background:rgba(0,0,0,.6);
+        padding:6px 18px; border-radius:20px;
+        border:1px solid rgba(152,123,67,.2);
+        backdrop-filter:blur(4px);
       }
 
-      /* ── FOOTER ── */
-      .footer {
-        text-align: center;
-        padding: 40px 20px;
-        border-top: 1px solid rgba(152,123,67,.2);
-        color: var(--muted);
-        font-size: .85rem;
+      .lb-thumbs {
+        display:flex; gap:6px; overflow-x:auto; max-width:300px;
+        scrollbar-width:none;
       }
-      .footer span { color: var(--gold2); }
+      .lb-thumbs::-webkit-scrollbar { display:none; }
+      .lb-thumb {
+        width:36px; height:36px; border-radius:5px;
+        object-fit:cover; flex-shrink:0;
+        border:1px solid rgba(152,123,67,.15);
+        cursor:pointer; opacity:.5; transition:all .25s;
+      }
+      .lb-thumb.active, .lb-thumb:hover {
+        opacity:1; border-color:var(--gold2);
+      }
+
+      /* ───── FOOTER ───── */
+      .footer {
+        text-align:center;
+        padding:36px 20px;
+        border-top:1px solid rgba(152,123,67,.12);
+        color:var(--muted);
+        font-size:.82rem;
+      }
+      .footer strong { color:var(--gold2); font-weight:600; }
+
+      @media(max-width:600px) {
+        nav { padding:0 20px; }
+        .gallery-section { padding:40px 16px 80px; }
+        .hero { height:200px; }
+        .stat-num { font-size:1.3rem; }
+      }
     </style>
   </head>
   <body>
 
     <!-- NAV -->
     <nav>
-      <a href="index.html" class="nav-back">
-        <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-        </svg>
-        العودة للرئيسية
-      </a>
-      <a href="index.html" class="nav-logo">
+      <div class="nav-logo">
         <img src="assets/logo.png" alt="شعار د. أسماء الحداد" />
+        <div class="nav-logo-text">
+          <span>دكتورة</span>
+          <span>أسماء الحداد</span>
+        </div>
+      </div>
+      <a href="index.html" class="nav-back">
+        <i class="fa-solid fa-arrow-right"></i>
+        العودة للرئيسية
       </a>
     </nav>
 
     <!-- HERO -->
     <div class="hero">
-      <div class="hero-line"></div>
-      <h1>معرض الصور</h1>
-      <p>نتائج حقيقية · تحولات مذهلة · ثقة بلا حدود</p>
+      <div class="hero-bg"></div>
+      <div class="hero-ornament"></div>
+      <div class="hero-content">
+        <div class="hero-tag">معرض د. أسماء الحداد</div>
+        <h1>معرض الصور</h1>
+        <div class="hero-divider">
+          <span>نتائج حقيقية · تحولات مذهلة</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats">
+      <div class="stat">
+        <span class="stat-num">21</span>
+        <span class="stat-label">صورة</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">+500</span>
+        <span class="stat-label">حالة ناجحة</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">+15</span>
+        <span class="stat-label">سنة خبرة</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">رضا تام</span>
+      </div>
     </div>
 
     <!-- GALLERY -->
     <section class="gallery-section">
-      <div class="masonry" id="gallery">
+      <div class="section-head">
+        <div class="section-title">جميع الصور</div>
+        <div class="section-count"><span>21</span> صورة</div>
+      </div>
 
-        <div class="masonry-item" onclick="openLightbox(0)">
-          <img src="assets/gallary/005A1467.jpeg" alt="نتيجة 1" loading="lazy" />
-          <div class="zoom-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
-            </svg>
-          </div>
+      <div class="masonry">
+
+        <div class="card" onclick="lb(0)">
+          <img src="assets/gallary/005A1467.jpeg" alt="" loading="lazy" />
+          <div class="card-overlay"><div class="card-overlay-icon"><i class="fa-solid fa-expand"></i></div></div>
         </div>
 
-        <div class="masonry-item" onclick="openLightbox(1)">
-          <img src="assets/gallary/005A1504.jpeg" alt="نتيجة 2" loading="lazy" />
-          <div class="zoom-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
-            </svg>
-          </div>
+        <div class="card" onclick="lb(1)">
+          <img src="assets/gallary/005A1504.jpeg" alt="" loading="lazy" />
+          <div class="card-overlay"><div class="card-overlay-icon"><i class="fa-solid fa-expand"></i></div></div>
         </div>
 
-        <div class="masonry-item" onclick="openLightbox(2)">
-          <img src="assets/gallary/04c387e0-93db-4d5f-8865-bf2160b1e3bb.jpg" alt="نتيجة 3" loading="lazy" />
-          <div class="zoom-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
-            </svg>
-          </div>
+        <div class="card" onclick="lb(2)">
+          <img src="assets/gallary/04c387e0-93db-4d5f-8865-bf2160b1e3bb.jpg" alt="" loading="lazy" />
+          <div class="card-overlay"><div class="card-overlay-icon"><i class="fa-solid fa-expand"></i></div></div>
         </div>
 
-        <div class="masonry-item" onclick="openLightbox(3)">
-          <img src="assets/gallary/09802054-37a7-4149-9713-3d1960df9511.jpg" alt="نتيجة 4" loading="lazy" />
-          <div class="zoom-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
-            </svg>
-          </div>
+        <div class="card" onclick="lb(3)">
+          <img src="assets/gallary/09802054-37a7-4149-9713-3d1960df9511.jpg" alt="" loading="lazy" />
+          <div class="card-overlay"><div class="card-overlay-icon"><i class="fa-solid fa-expand"></i></div></div>
         </div>
 
-        <div class="masonry-item" onclick="openLightbox(4)">
-          <img src="assets/gallary/0C4A8610.jpeg" alt="نتيجة 5" loading="lazy" />
-          <div class="zoom-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
-            </svg>
-          </div>
+        <div class="card" onclick="lb(4)">
+          <img src="assets/gallary/0C4A8610.jpeg" alt="" loading="lazy" />
+          <div class="card-overlay"><div class="card-overlay-icon"><i class="fa-solid fa-expand"></i></div></div>
         </div>
 
-        <div class="masonry-item" onclick="openLightbox(5)">
-          <img src="assets/gallary/0C4A8623.jpeg" alt="نتيجة 6" loading="lazy" />
-          <div class="zoom-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
-            </svg>
-          </div>
+        <div class="card" onclick="lb(5)">
+          <img src="assets/gallary/0C4A8623.jpeg" alt="" loading="lazy" />
+          <div class="card-overlay"><div class="card-overlay-icon"><i class="fa-solid fa-expand"></i></div></div>
         </div>
 
-        <div class="masonry-item" onclick="openLightbox(6)">
-          <img src="assets/gallary/0C4A8652.jpeg" alt="نتيجة 7" loading="lazy" />
-          <div class="zoom-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
-            </svg>
-          </div>
+        <div class="card" onclick="lb(6)">
+          <img src="assets/gallary/0C4A8652.jpeg" alt="" loading="lazy" />
+          <div class="card-overlay"><div class="card-overlay-icon"><i class="fa-solid fa-expand"></i></div></div>
         </div>
 
-        <div class="masonry-item" onclick="openLightbox(7)">
-          <img src="assets/gallary/0C4A8763.jpeg" alt="نتيجة 8" loading="lazy" />
-          <div class="zoom-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
-            </svg>
-          </div>
+        <div class="card" onclick="lb(7)">
+          <img src="assets/gallary/0C4A8763.jpeg" alt="" loading="lazy" />
+          <div class="card-overlay"><div class="card-overlay-icon"><i class="fa-solid fa-expand"></i></div></div>
         </div>
 
-        <div class="masonry-item" onclick="openLightbox(8)">
-          <img src="assets/gallary/0C4A8767.jpeg" alt="نتيجة 9" loading="lazy" />
-          <div class="zoom-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
-            </svg>
-          </div>
+        <div class="card" onclick="lb(8)">
+          <img src="assets/gallary/0C4A8767.jpeg" alt="" loading="lazy" />
+          <div class="card-overlay"><div class="card-overlay-icon"><i class="fa-solid fa-expand"></i></div></div>
         </div>
 
-        <div class="masonry-item" onclick="openLightbox(9)">
-          <img src="assets/gallary/0C4A8769.jpeg" alt="نتيجة 10" loading="lazy" />
-          <div class="zoom-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
-            </svg>
-          </div>
+        <div class="card" onclick="lb(9)">
+          <img src="assets/gallary/0C4A8769.jpeg" alt="" loading="lazy" />
+          <div class="card-overlay"><div class="card-overlay-icon"><i class="fa-solid fa-expand"></i></div></div>
         </div>
 
-        <div class="masonry-item" onclick="openLightbox(10)">
-          <img src="assets/gallary/0C4A8771.jpeg" alt="نتيجة 11" loading="lazy" />
-          <div class="zoom-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
-            </svg>
-          </div>
+        <div class="card" onclick="lb(10)">
+          <img src="assets/gallary/0C4A8771.jpeg" alt="" loading="lazy" />
+          <div class="card-overlay"><div class="card-overlay-icon"><i class="fa-solid fa-expand"></i></div></div>
         </div>
 
-        <div class="masonry-item" onclick="openLightbox(11)">
-          <img src="assets/gallary/0C4A8778.jpeg" alt="نتيجة 12" loading="lazy" />
-          <div class="zoom-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
-            </svg>
-          </div>
+        <div class="card" onclick="lb(11)">
+          <img src="assets/gallary/0C4A8778.jpeg" alt="" loading="lazy" />
+          <div class="card-overlay"><div class="card-overlay-icon"><i class="fa-solid fa-expand"></i></div></div>
         </div>
 
-        <div class="masonry-item" onclick="openLightbox(12)">
-          <img src="assets/gallary/0C4A8786.jpeg" alt="نتيجة 13" loading="lazy" />
-          <div class="zoom-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
-            </svg>
-          </div>
+        <div class="card" onclick="lb(12)">
+          <img src="assets/gallary/0C4A8786.jpeg" alt="" loading="lazy" />
+          <div class="card-overlay"><div class="card-overlay-icon"><i class="fa-solid fa-expand"></i></div></div>
         </div>
 
-        <div class="masonry-item" onclick="openLightbox(13)">
-          <img src="assets/gallary/11b8338a-923d-49a2-a047-bdab8633794d.jpg" alt="نتيجة 14" loading="lazy" />
-          <div class="zoom-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
-            </svg>
-          </div>
+        <div class="card" onclick="lb(13)">
+          <img src="assets/gallary/11b8338a-923d-49a2-a047-bdab8633794d.jpg" alt="" loading="lazy" />
+          <div class="card-overlay"><div class="card-overlay-icon"><i class="fa-solid fa-expand"></i></div></div>
         </div>
 
-        <div class="masonry-item" onclick="openLightbox(14)">
-          <img src="assets/gallary/320f040f-b7f1-4e7d-b35f-75d7a55e40b1.jpg" alt="نتيجة 15" loading="lazy" />
-          <div class="zoom-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
-            </svg>
-          </div>
+        <div class="card" onclick="lb(14)">
+          <img src="assets/gallary/320f040f-b7f1-4e7d-b35f-75d7a55e40b1.jpg" alt="" loading="lazy" />
+          <div class="card-overlay"><div class="card-overlay-icon"><i class="fa-solid fa-expand"></i></div></div>
         </div>
 
-        <div class="masonry-item" onclick="openLightbox(15)">
-          <img src="assets/gallary/3234bcfc-703b-4c1d-957b-fa87b7aa500c.jpg" alt="نتيجة 16" loading="lazy" />
-          <div class="zoom-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
-            </svg>
-          </div>
+        <div class="card" onclick="lb(15)">
+          <img src="assets/gallary/3234bcfc-703b-4c1d-957b-fa87b7aa500c.jpg" alt="" loading="lazy" />
+          <div class="card-overlay"><div class="card-overlay-icon"><i class="fa-solid fa-expand"></i></div></div>
         </div>
 
-        <div class="masonry-item" onclick="openLightbox(16)">
-          <img src="assets/gallary/45998a7f-1d80-464e-8f41-2f565aa3a0f9.jpg" alt="نتيجة 17" loading="lazy" />
-          <div class="zoom-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
-            </svg>
-          </div>
+        <div class="card" onclick="lb(16)">
+          <img src="assets/gallary/45998a7f-1d80-464e-8f41-2f565aa3a0f9.jpg" alt="" loading="lazy" />
+          <div class="card-overlay"><div class="card-overlay-icon"><i class="fa-solid fa-expand"></i></div></div>
         </div>
 
-        <div class="masonry-item" onclick="openLightbox(17)">
-          <img src="assets/gallary/IMG_6112.jpeg" alt="نتيجة 18" loading="lazy" />
-          <div class="zoom-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
-            </svg>
-          </div>
+        <div class="card" onclick="lb(17)">
+          <img src="assets/gallary/IMG_6112.jpeg" alt="" loading="lazy" />
+          <div class="card-overlay"><div class="card-overlay-icon"><i class="fa-solid fa-expand"></i></div></div>
         </div>
 
-        <div class="masonry-item" onclick="openLightbox(18)">
-          <img src="assets/gallary/c6cbbb77-35c5-411c-9972-5d045ef4a12d.jpg" alt="نتيجة 19" loading="lazy" />
-          <div class="zoom-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
-            </svg>
-          </div>
+        <div class="card" onclick="lb(18)">
+          <img src="assets/gallary/c6cbbb77-35c5-411c-9972-5d045ef4a12d.jpg" alt="" loading="lazy" />
+          <div class="card-overlay"><div class="card-overlay-icon"><i class="fa-solid fa-expand"></i></div></div>
         </div>
 
-        <div class="masonry-item" onclick="openLightbox(19)">
-          <img src="assets/gallary/e91782c9-dc1a-49b9-b472-da02f37f511e.jpg" alt="نتيجة 20" loading="lazy" />
-          <div class="zoom-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
-            </svg>
-          </div>
+        <div class="card" onclick="lb(19)">
+          <img src="assets/gallary/e91782c9-dc1a-49b9-b472-da02f37f511e.jpg" alt="" loading="lazy" />
+          <div class="card-overlay"><div class="card-overlay-icon"><i class="fa-solid fa-expand"></i></div></div>
         </div>
 
-        <div class="masonry-item" onclick="openLightbox(20)">
-          <img src="assets/gallary/ee8fa357-b5f7-4505-a4c5-6de8ab69486b.jpg" alt="نتيجة 21" loading="lazy" />
-          <div class="zoom-icon">
-            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
-            </svg>
-          </div>
+        <div class="card" onclick="lb(20)">
+          <img src="assets/gallary/ee8fa357-b5f7-4505-a4c5-6de8ab69486b.jpg" alt="" loading="lazy" />
+          <div class="card-overlay"><div class="card-overlay-icon"><i class="fa-solid fa-expand"></i></div></div>
         </div>
 
       </div>
@@ -516,34 +606,27 @@
 
     <!-- FOOTER -->
     <footer class="footer">
-      <p>جميع الحقوق محفوظة © 2025 &nbsp;|&nbsp; <span>د. أسماء الحداد</span></p>
+      جميع الحقوق محفوظة © 2026 &nbsp;·&nbsp; <strong>د. أسماء الحداد</strong>
     </footer>
 
+  
+
     <!-- LIGHTBOX -->
-    <div class="lightbox" id="lightbox" onclick="closeLightboxOnBg(event)">
-      <button class="lb-close" onclick="closeLightbox()">
-        <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-        </svg>
-      </button>
-      <button class="lb-prev" onclick="navigate(-1)">
-        <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
-        </svg>
-      </button>
-      <div class="lightbox-inner">
+    <div class="lightbox" id="lightbox">
+      <button class="lb-close" onclick="closeLb()"><i class="fa-solid fa-xmark"></i></button>
+      <button class="lb-btn" id="lb-prev" onclick="nav(-1)"><i class="fa-solid fa-chevron-right"></i></button>
+      <div class="lb-wrap">
         <img id="lb-img" src="" alt="" />
       </div>
-      <button class="lb-next" onclick="navigate(1)">
-        <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
-        </svg>
-      </button>
-      <div class="lb-counter" id="lb-counter"></div>
+      <button class="lb-btn" id="lb-next" onclick="nav(1)"><i class="fa-solid fa-chevron-left"></i></button>
+      <div class="lb-footer">
+        <div class="lb-thumbs" id="lb-thumbs"></div>
+        <div class="lb-counter" id="lb-counter"></div>
+      </div>
     </div>
 
     <script>
-      const images = [
+      const imgs = [
         'assets/gallary/005A1467.jpeg',
         'assets/gallary/005A1504.jpeg',
         'assets/gallary/04c387e0-93db-4d5f-8865-bf2160b1e3bb.jpg',
@@ -567,42 +650,56 @@
         'assets/gallary/ee8fa357-b5f7-4505-a4c5-6de8ab69486b.jpg',
       ];
 
-      let current = 0;
+      let cur = 0;
 
-      function openLightbox(index) {
-        current = index;
-        updateLightbox();
+      // build thumbnail strip
+      const strip = document.getElementById('lb-thumbs');
+      imgs.forEach((src, i) => {
+        const t = document.createElement('img');
+        t.src = src; t.className = 'lb-thumb';
+        t.onclick = (e) => { e.stopPropagation(); lb(i); };
+        strip.appendChild(t);
+      });
+
+      function lb(i) {
+        cur = i;
+        update();
         document.getElementById('lightbox').classList.add('active');
         document.body.style.overflow = 'hidden';
       }
 
-      function closeLightbox() {
+      function closeLb() {
         document.getElementById('lightbox').classList.remove('active');
         document.body.style.overflow = '';
       }
 
-      function closeLightboxOnBg(e) {
-        if (e.target === document.getElementById('lightbox')) closeLightbox();
+      function nav(d) { cur = (cur + d + imgs.length) % imgs.length; update(); }
+
+      function update() {
+        document.getElementById('lb-img').src = imgs[cur];
+        document.getElementById('lb-counter').textContent = (cur + 1) + ' / ' + imgs.length;
+        document.querySelectorAll('.lb-thumb').forEach((t,i) => {
+          t.classList.toggle('active', i === cur);
+        });
+        strip.children[cur]?.scrollIntoView({ inline:'center', behavior:'smooth' });
       }
 
-      function navigate(dir) {
-        current = (current + dir + images.length) % images.length;
-        updateLightbox();
-      }
+      document.getElementById('lightbox').addEventListener('click', function(e) {
+        if (e.target === this) closeLb();
+      });
 
-      function updateLightbox() {
-        const img = document.getElementById('lb-img');
-        img.src = images[current];
-        document.getElementById('lb-counter').textContent =
-          (current + 1) + ' / ' + images.length;
-      }
+      document.addEventListener('keydown', e => {
+        if (!document.getElementById('lightbox').classList.contains('active')) return;
+        if (e.key === 'Escape')      closeLb();
+        if (e.key === 'ArrowRight')  nav(-1);
+        if (e.key === 'ArrowLeft')   nav(1);
+      });
 
-      document.addEventListener('keydown', (e) => {
-        const lb = document.getElementById('lightbox');
-        if (!lb.classList.contains('active')) return;
-        if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowRight') navigate(-1);
-        if (e.key === 'ArrowLeft')  navigate(1);
+      let ts = 0;
+      document.getElementById('lightbox').addEventListener('touchstart', e => ts = e.touches[0].clientX);
+      document.getElementById('lightbox').addEventListener('touchend', e => {
+        const diff = ts - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) nav(diff > 0 ? 1 : -1);
       });
     </script>
   </body>

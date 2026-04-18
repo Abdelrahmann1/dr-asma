@@ -71,6 +71,8 @@
         inset: 0;
         background: var(--black);
         z-index: 99999;
+        font-size: medium;
+        font-weight: 600;
         display: flex;
         align-items: center;
         justify-content: center;

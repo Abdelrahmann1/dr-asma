@@ -161,37 +161,6 @@
         background:linear-gradient(90deg,transparent,var(--gold3));
       }
       .hero-divider::after { transform:scaleX(-1); }
-
-      /* ───── STATS BAR ───── */
-      .stats {
-        display:flex;
-        justify-content:center;
-        gap:0;
-        border-top: 1px solid rgba(152,123,67,.15);
-        border-bottom: 1px solid rgba(152,123,67,.15);
-        background: rgba(10,10,10,.9);
-        padding: 18px 0;
-      }
-      .stat {
-        flex:1; max-width:180px;
-        text-align:center;
-        position:relative;
-      }
-      .stat + .stat::before {
-        content:'';
-        position:absolute; right:0; top:50%;
-        transform:translateY(-50%);
-        height:30px; width:1px;
-        background:rgba(152,123,67,.2);
-      }
-      .stat-num {
-        font-family:'Alexandria',sans-serif;
-        font-size:1.6rem; font-weight:800;
-        color:var(--gold2);
-        display:block;
-      }
-      .stat-label { font-size:.72rem; color:var(--muted); letter-spacing:1px; }
-
       /* ───── GALLERY ───── */
       .gallery-section {
         padding: 56px 40px 100px;
@@ -459,33 +428,12 @@
       <div class="hero-bg"></div>
       <div class="hero-ornament"></div>
       <div class="hero-content">
-        <div class="hero-tag">معرض د. أسماء الحداد</div>
         <h1>معرض الصور</h1>
-        <div class="hero-divider">
-          <span>نتائج حقيقية · تحولات مذهلة</span>
-        </div>
+        
       </div>
     </div>
 
-    <!-- STATS -->
-    <div class="stats">
-      <div class="stat">
-        <span class="stat-num">21</span>
-        <span class="stat-label">صورة</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">+500</span>
-        <span class="stat-label">حالة ناجحة</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">+15</span>
-        <span class="stat-label">سنة خبرة</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">100%</span>
-        <span class="stat-label">رضا تام</span>
-      </div>
-    </div>
+    
 
     <!-- GALLERY -->
     <section class="gallery-section">

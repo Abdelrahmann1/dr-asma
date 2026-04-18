@@ -1,0 +1,609 @@
+<!doctype html>
+<html dir="rtl" lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>معرض الصور – د. أسماء الحداد</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Alexandria:wght@300;400;500;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="favicon.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <style>
+      :root {
+        --gold: #987B43;
+        --gold2: #c4a96e;
+        --gold3: #6b5530;
+        --black: #000000;
+        --dark: #111;
+        --dark2: #181818;
+        --dark3: #1e1e1e;
+        --text: #e8e4dd;
+        --muted: #888;
+      }
+
+      *, *::before, *::after {
+        margin: 0; padding: 0; box-sizing: border-box;
+      }
+
+      html { scroll-behavior: smooth; overflow-x: hidden; }
+
+      body {
+        font-family: 'Tajawal', sans-serif;
+        background: var(--black);
+        color: var(--text);
+        overflow-x: hidden;
+        direction: rtl;
+      }
+
+      a { text-decoration: none; color: inherit; }
+      img { max-width: 100%; display: block; }
+
+      ::-webkit-scrollbar { width: 4px; }
+      ::-webkit-scrollbar-track { background: var(--dark); }
+      ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+      /* ── NAV ── */
+      nav {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 1000;
+        padding: 18px 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: linear-gradient(180deg, rgba(0,0,0,.95) 0%, rgba(0,0,0,.7) 100%);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(152,123,67,.25);
+      }
+
+      .nav-logo img { height: 52px; object-fit: contain; }
+
+      .nav-back {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--gold2);
+        font-size: .9rem;
+        font-weight: 500;
+        transition: color .3s;
+      }
+      .nav-back:hover { color: #fff; }
+      .nav-back svg { width: 18px; height: 18px; }
+
+      /* ── HERO ── */
+      .hero {
+        height: 340px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        margin-top: 88px;
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(ellipse 60% 70% at 50% 50%, rgba(152,123,67,.18) 0%, transparent 70%),
+          linear-gradient(180deg, #0a0a0a 0%, #000 100%);
+      }
+
+      .hero-line {
+        width: 60px; height: 1px;
+        background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        margin: 0 auto 20px;
+      }
+
+      .hero h1 {
+        font-family: 'Alexandria', sans-serif;
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        letter-spacing: 1px;
+        background: linear-gradient(135deg, var(--gold2), #fff 50%, var(--gold2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        position: relative;
+      }
+
+      .hero p {
+        margin-top: 14px;
+        color: var(--muted);
+        font-size: 1rem;
+        letter-spacing: 2px;
+        position: relative;
+      }
+
+      /* ── GALLERY SECTION ── */
+      .gallery-section {
+        padding: 60px 40px 100px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      /* Masonry grid */
+      .masonry {
+        columns: 4;
+        column-gap: 16px;
+      }
+
+      @media (max-width: 1100px) { .masonry { columns: 3; } }
+      @media (max-width: 720px)  { .masonry { columns: 2; } }
+      @media (max-width: 460px)  { .masonry { columns: 1; } }
+
+      .masonry-item {
+        break-inside: avoid;
+        margin-bottom: 16px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        cursor: pointer;
+        border: 1px solid rgba(152,123,67,.15);
+        background: var(--dark2);
+      }
+
+      .masonry-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform .55s cubic-bezier(.25,.46,.45,.94);
+      }
+
+      .masonry-item::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          transparent 50%,
+          rgba(0,0,0,.7) 100%
+        );
+        opacity: 0;
+        transition: opacity .4s;
+      }
+
+      .masonry-item:hover img { transform: scale(1.06); }
+      .masonry-item:hover::after { opacity: 1; }
+
+      .masonry-item .zoom-icon {
+        position: absolute;
+        bottom: 14px;
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
+        opacity: 0;
+        z-index: 2;
+        background: rgba(152,123,67,.9);
+        border-radius: 50%;
+        width: 42px; height: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity .35s, transform .35s;
+      }
+      .masonry-item:hover .zoom-icon {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+      .masonry-item .zoom-icon svg {
+        width: 20px; height: 20px;
+        stroke: #fff;
+      }
+
+      /* ── LIGHTBOX ── */
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: rgba(0,0,0,.96);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .35s;
+        backdrop-filter: blur(6px);
+      }
+      .lightbox.active {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .lightbox-inner {
+        position: relative;
+        max-width: 90vw;
+        max-height: 90vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .lightbox-inner img {
+        max-width: 90vw;
+        max-height: 88vh;
+        border-radius: 8px;
+        box-shadow: 0 0 80px rgba(152,123,67,.35);
+        border: 1px solid rgba(152,123,67,.3);
+        object-fit: contain;
+        transform: scale(.92);
+        transition: transform .4s cubic-bezier(.25,.46,.45,.94);
+      }
+      .lightbox.active .lightbox-inner img { transform: scale(1); }
+
+      .lb-btn {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(152,123,67,.2);
+        border: 1px solid rgba(152,123,67,.4);
+        color: #fff;
+        width: 50px; height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background .3s;
+        z-index: 10000;
+      }
+      .lb-btn:hover { background: rgba(152,123,67,.6); }
+      .lb-btn svg { width: 22px; height: 22px; stroke: #fff; }
+      .lb-prev { right: 24px; }
+      .lb-next { left: 24px; }
+
+      .lb-close {
+        position: fixed;
+        top: 20px;
+        left: 24px;
+        background: rgba(152,123,67,.2);
+        border: 1px solid rgba(152,123,67,.4);
+        color: #fff;
+        width: 44px; height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background .3s;
+        z-index: 10000;
+      }
+      .lb-close:hover { background: rgba(200,50,50,.5); }
+      .lb-close svg { width: 20px; height: 20px; stroke: #fff; }
+
+      .lb-counter {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: var(--gold2);
+        font-size: .85rem;
+        letter-spacing: 2px;
+        z-index: 10000;
+      }
+
+      /* ── FOOTER ── */
+      .footer {
+        text-align: center;
+        padding: 40px 20px;
+        border-top: 1px solid rgba(152,123,67,.2);
+        color: var(--muted);
+        font-size: .85rem;
+      }
+      .footer span { color: var(--gold2); }
+    </style>
+  </head>
+  <body>
+
+    <!-- NAV -->
+    <nav>
+      <a href="index.html" class="nav-back">
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+        العودة للرئيسية
+      </a>
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo.png" alt="شعار د. أسماء الحداد" />
+      </a>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-line"></div>
+      <h1>معرض الصور</h1>
+      <p>نتائج حقيقية · تحولات مذهلة · ثقة بلا حدود</p>
+    </div>
+
+    <!-- GALLERY -->
+    <section class="gallery-section">
+      <div class="masonry" id="gallery">
+
+        <div class="masonry-item" onclick="openLightbox(0)">
+          <img src="assets/gallary/005A1467.jpeg" alt="نتيجة 1" loading="lazy" />
+          <div class="zoom-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(1)">
+          <img src="assets/gallary/005A1504.jpeg" alt="نتيجة 2" loading="lazy" />
+          <div class="zoom-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(2)">
+          <img src="assets/gallary/04c387e0-93db-4d5f-8865-bf2160b1e3bb.jpg" alt="نتيجة 3" loading="lazy" />
+          <div class="zoom-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(3)">
+          <img src="assets/gallary/09802054-37a7-4149-9713-3d1960df9511.jpg" alt="نتيجة 4" loading="lazy" />
+          <div class="zoom-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(4)">
+          <img src="assets/gallary/0C4A8610.jpeg" alt="نتيجة 5" loading="lazy" />
+          <div class="zoom-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(5)">
+          <img src="assets/gallary/0C4A8623.jpeg" alt="نتيجة 6" loading="lazy" />
+          <div class="zoom-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(6)">
+          <img src="assets/gallary/0C4A8652.jpeg" alt="نتيجة 7" loading="lazy" />
+          <div class="zoom-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(7)">
+          <img src="assets/gallary/0C4A8763.jpeg" alt="نتيجة 8" loading="lazy" />
+          <div class="zoom-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(8)">
+          <img src="assets/gallary/0C4A8767.jpeg" alt="نتيجة 9" loading="lazy" />
+          <div class="zoom-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(9)">
+          <img src="assets/gallary/0C4A8769.jpeg" alt="نتيجة 10" loading="lazy" />
+          <div class="zoom-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(10)">
+          <img src="assets/gallary/0C4A8771.jpeg" alt="نتيجة 11" loading="lazy" />
+          <div class="zoom-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(11)">
+          <img src="assets/gallary/0C4A8778.jpeg" alt="نتيجة 12" loading="lazy" />
+          <div class="zoom-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(12)">
+          <img src="assets/gallary/0C4A8786.jpeg" alt="نتيجة 13" loading="lazy" />
+          <div class="zoom-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(13)">
+          <img src="assets/gallary/11b8338a-923d-49a2-a047-bdab8633794d.jpg" alt="نتيجة 14" loading="lazy" />
+          <div class="zoom-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(14)">
+          <img src="assets/gallary/320f040f-b7f1-4e7d-b35f-75d7a55e40b1.jpg" alt="نتيجة 15" loading="lazy" />
+          <div class="zoom-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(15)">
+          <img src="assets/gallary/3234bcfc-703b-4c1d-957b-fa87b7aa500c.jpg" alt="نتيجة 16" loading="lazy" />
+          <div class="zoom-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(16)">
+          <img src="assets/gallary/45998a7f-1d80-464e-8f41-2f565aa3a0f9.jpg" alt="نتيجة 17" loading="lazy" />
+          <div class="zoom-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(17)">
+          <img src="assets/gallary/IMG_6112.jpeg" alt="نتيجة 18" loading="lazy" />
+          <div class="zoom-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(18)">
+          <img src="assets/gallary/c6cbbb77-35c5-411c-9972-5d045ef4a12d.jpg" alt="نتيجة 19" loading="lazy" />
+          <div class="zoom-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(19)">
+          <img src="assets/gallary/e91782c9-dc1a-49b9-b472-da02f37f511e.jpg" alt="نتيجة 20" loading="lazy" />
+          <div class="zoom-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="masonry-item" onclick="openLightbox(20)">
+          <img src="assets/gallary/ee8fa357-b5f7-4505-a4c5-6de8ab69486b.jpg" alt="نتيجة 21" loading="lazy" />
+          <div class="zoom-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <p>جميع الحقوق محفوظة © 2025 &nbsp;|&nbsp; <span>د. أسماء الحداد</span></p>
+    </footer>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" onclick="closeLightboxOnBg(event)">
+      <button class="lb-close" onclick="closeLightbox()">
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+      <button class="lb-prev" onclick="navigate(-1)">
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+        </svg>
+      </button>
+      <div class="lightbox-inner">
+        <img id="lb-img" src="" alt="" />
+      </div>
+      <button class="lb-next" onclick="navigate(1)">
+        <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </button>
+      <div class="lb-counter" id="lb-counter"></div>
+    </div>
+
+    <script>
+      const images = [
+        'assets/gallary/005A1467.jpeg',
+        'assets/gallary/005A1504.jpeg',
+        'assets/gallary/04c387e0-93db-4d5f-8865-bf2160b1e3bb.jpg',
+        'assets/gallary/09802054-37a7-4149-9713-3d1960df9511.jpg',
+        'assets/gallary/0C4A8610.jpeg',
+        'assets/gallary/0C4A8623.jpeg',
+        'assets/gallary/0C4A8652.jpeg',
+        'assets/gallary/0C4A8763.jpeg',
+        'assets/gallary/0C4A8767.jpeg',
+        'assets/gallary/0C4A8769.jpeg',
+        'assets/gallary/0C4A8771.jpeg',
+        'assets/gallary/0C4A8778.jpeg',
+        'assets/gallary/0C4A8786.jpeg',
+        'assets/gallary/11b8338a-923d-49a2-a047-bdab8633794d.jpg',
+        'assets/gallary/320f040f-b7f1-4e7d-b35f-75d7a55e40b1.jpg',
+        'assets/gallary/3234bcfc-703b-4c1d-957b-fa87b7aa500c.jpg',
+        'assets/gallary/45998a7f-1d80-464e-8f41-2f565aa3a0f9.jpg',
+        'assets/gallary/IMG_6112.jpeg',
+        'assets/gallary/c6cbbb77-35c5-411c-9972-5d045ef4a12d.jpg',
+        'assets/gallary/e91782c9-dc1a-49b9-b472-da02f37f511e.jpg',
+        'assets/gallary/ee8fa357-b5f7-4505-a4c5-6de8ab69486b.jpg',
+      ];
+
+      let current = 0;
+
+      function openLightbox(index) {
+        current = index;
+        updateLightbox();
+        document.getElementById('lightbox').classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      function closeLightboxOnBg(e) {
+        if (e.target === document.getElementById('lightbox')) closeLightbox();
+      }
+
+      function navigate(dir) {
+        current = (current + dir + images.length) % images.length;
+        updateLightbox();
+      }
+
+      function updateLightbox() {
+        const img = document.getElementById('lb-img');
+        img.src = images[current];
+        document.getElementById('lb-counter').textContent =
+          (current + 1) + ' / ' + images.length;
+      }
+
+      document.addEventListener('keydown', (e) => {
+        const lb = document.getElementById('lightbox');
+        if (!lb.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') navigate(-1);
+        if (e.key === 'ArrowLeft')  navigate(1);
+      });
+    </script>
+  </body>
+</html>

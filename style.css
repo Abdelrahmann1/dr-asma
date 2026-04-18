@@ -986,7 +986,6 @@
       .about-img {
         position: relative;
         background: var(--dark2);
-        overflow: hidden;
         min-height: 480px;
       }
 
